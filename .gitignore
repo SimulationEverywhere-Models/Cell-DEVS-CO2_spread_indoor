@@ -1,0 +1,10 @@
+bin/*
+
+CMakeFiles/*
+
+results/*
+
+cmake_install*
+CMakeCache*
+Makefile
+CTestTestfile*
