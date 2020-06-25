@@ -11,7 +11,7 @@
     },
     "default_config": {
       "CO2_cell": {
-        "conc_increase": 143.2,
+        "conc_increase": 243.2,
         "base" : 500,
         "resp_time" : 5,
         "window_conc": 400,
