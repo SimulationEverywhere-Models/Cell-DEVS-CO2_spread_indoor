@@ -1,0 +1,66 @@
+{
+    "files": {
+        "input" : "input/computer_lab_image.bmp",
+        "output" : "output/lab_scenario3D.json"
+    },
+    "model" : {
+        "height" : 13,
+        "neighbourhood" : "von_neumann",
+        "range" : 1,
+        "walls_only" : false,
+        "heights" : {
+            "door_top" : 8,
+            "vent" : 12,
+            "workstation" : 4,
+            "window" : {
+                "bottom" : 4,
+                "top" : 8
+            }
+        },
+        "counter" : {
+            "seed" : 5,
+            "minimum" : -30,
+            "maximum" : 10
+        }
+    },
+    "image" : {
+        "tolerance" : 50,
+        "colours" : {
+            "255,255,255" : {
+                "concentration" : 500,
+                "type" : -100,
+                "counter" : -1
+            },
+            "0,255,255" : {
+                "concentration" : 500,
+                "type" : -200,
+                "counter" : -1
+            },
+            "0,0,0" : {
+                "concentration" : 0,
+                "type" : -300,
+                "counter" : -1
+            },
+            "0,255,0" : {
+                "concentration" : 500,
+                "type" : -400,
+                "counter" : -1
+            },
+            "255,255,0" : {
+                "concentration" : 300,
+                "type" : -500,
+                "counter" : -1
+            },
+            "0,0,255" : {
+                "concentration" : 300,
+                "type" : -600,
+                "counter" : -1
+            },
+            "255,0,0" : {
+                "concentration" : 500,
+                "type" : -700,
+                "counter" : -1
+            }
+        }
+    }
+}
