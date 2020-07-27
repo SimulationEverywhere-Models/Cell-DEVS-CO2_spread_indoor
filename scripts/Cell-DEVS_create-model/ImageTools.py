@@ -72,7 +72,7 @@ class ImageTools:
                 ))
         return cells
 
-    #
+    # Get the dimensions of an image without creating an ImageTools instance
     @staticmethod
     def getDimensions (filename):
         return Image.open(filename, "r").size

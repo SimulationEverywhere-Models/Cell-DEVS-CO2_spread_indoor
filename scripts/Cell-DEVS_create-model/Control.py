@@ -34,8 +34,6 @@ class Control:
             model = Control.exactImageParse(config)
         # Input model is an image with mismatched dimensions (guessing required)
         elif (convertType == "extrapolate_image"):
-            print("NOTE: Image dimensions do not match provided dimensions (image processing will take place)")
-            print("ERROR: Feature not yet implemented")
             return  # will include processing where image size and shape do not match
         # Input model is a JSON
         elif (convertType == "json"):
@@ -75,7 +73,7 @@ class Control:
 
     # Convert image files to 2D or 3D formatted models (depending on configuration file)
     @staticmethod
-    def exactImageParse (config):
+    def process_exactImage (config):
         image = ImageTools(config)  # Prepare the image tools
         image.load()                # Load the image
         cells = image.makeCells()   # Make cells out of the image
@@ -92,7 +90,7 @@ class Control:
 
     # Convert 2D JSON formatted models to 3D JSON formatted models
     @staticmethod
-    def json_2Dto3D (config):
+    def process_json_2Dto3D (config):
         # Get 2D JSON
         data = ""
         try:
@@ -119,3 +117,13 @@ class Control:
             cells = ConvertTools.addFloorCeiling(width, length, config["model"]["height"], cells)
 
         return ConvertTools.createStructure(head, cells)  # Combine the head and the cells
+
+    # Convert
+    @staticmethod
+    def process_inexactImage (config, outDim):
+        print("NOTE: Image dimensions do not match provided dimensions (inexact image processing will take place)")
+        print("ERROR: Feature not yet implemented")
+        return  # will be removed when function implentation is complete
+
+        image = ImageTools(config)  # Prepare the image tools
+        image.load()                # Load the image
