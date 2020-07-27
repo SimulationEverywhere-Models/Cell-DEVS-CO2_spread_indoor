@@ -75,10 +75,10 @@ while (response != "q"):
             if (is3D):
                 coord += [layer]
             if (str(coord) in cells):
-                result += symbols[cells[str(coord)]]
+                result += symbols[int(cells[str(coord)])]
             else:
                 result += symbols[-100]
-            result += " "
+            result += ""
         result += "\n"
 
     print(result)
