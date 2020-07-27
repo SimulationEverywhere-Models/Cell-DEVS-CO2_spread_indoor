@@ -71,3 +71,8 @@ class ImageTools:
                     counter
                 ))
         return cells
+
+    #
+    @staticmethod
+    def getDimensions (filename):
+        return Image.open(filename, "r").size
