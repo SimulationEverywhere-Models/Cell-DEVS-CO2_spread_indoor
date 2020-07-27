@@ -1,5 +1,5 @@
 # Tools for converting 2D models into 3D models
-# Written by Thomas Roller
+# Thomas Roller
 
 import json
 from GeneralTools import GeneralTools

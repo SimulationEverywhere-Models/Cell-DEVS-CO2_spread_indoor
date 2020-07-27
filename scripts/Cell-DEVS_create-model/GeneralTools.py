@@ -1,5 +1,5 @@
 # General tools
-# Written by Thomas Roller
+# Thomas Roller
 
 class GeneralTools:
 

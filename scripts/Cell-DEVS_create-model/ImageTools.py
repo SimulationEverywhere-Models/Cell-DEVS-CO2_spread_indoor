@@ -1,5 +1,5 @@
 # Tools for image loading and analysis
-# Written by Thomas Roller
+# Thomas Roller
 
 # Note that the Python module "Pillow" is required
 
