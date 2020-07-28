@@ -88,7 +88,7 @@ class Control:
 
         # If scaling is required
         if (outDim is not None):
-            if (debug): print("NOTE: Image dimensions do not match provided dimensions (inexact image processing will take place)")
+            if (debug): print("NOTE: Image dimensions do not match provided dimensions (inexact image interpolation will take place)")
             if (debug): print("Scaling cells...")
             cells = ConvertTools.scaleCells(cells, [width, length], outDim, debug=debug)
             width, length = outDim

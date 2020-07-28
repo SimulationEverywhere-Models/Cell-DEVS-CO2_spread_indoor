@@ -152,7 +152,7 @@ class ConvertTools:
     @staticmethod
     def scaleCells (cells, orgDim, newDim, debug=False):
         if (orgDim[0] < newDim[0] or orgDim[1] < newDim[1]):
-            if (debug): print("| ERROR: Input dimension is smaller than output (cannot extrapolate)")
+            if (debug): print("| ERROR: At least one input dimension is smaller than its respective output dimension (cannot extrapolate)")
             sys.exit(1)
 
         newCells = []

@@ -41,4 +41,4 @@ args = argParser.parse_args()
 try:
     Control.start(args)
 except KeyboardInterrupt:
-    print("Caught interrupt -- aborting")
+    print("Caught interrupt")
