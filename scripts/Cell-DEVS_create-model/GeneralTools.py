@@ -1,6 +1,8 @@
 # General tools
 # Thomas Roller
 
+import math
+
 class GeneralTools:
 
     # Creates and retruns an IMPERMEABLE_STRUCTURE cell with the given coordinates
@@ -20,6 +22,13 @@ class GeneralTools:
     def export (filename, data):
         with open(filename, "w") as f:
             f.write(data)
+
+    # Print progress message
+    @staticmethod
+    def printProgress (currStep, maxStep):
+        if (math.floor(currStep % (maxStep / 100)) == 0):
+            progress = round((currStep / maxStep) * 100)
+            print(f"| Progress: {min(progress, 100)}%   \r", end="")
 
     # Class for generating psuedorandom numbers
     class RandomNumber:

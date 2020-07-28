@@ -122,20 +122,17 @@ class ConvertTools:
     @staticmethod
     def addFloorCeiling (width, length, height, cells, showProgress=False):
         maxStep = width * length
+        newCells = []
         for w in range (0, width):
             for l in range (0, length):
                 if (showProgress):
                     currStep = ((w + 1) * length) + (l + 1)
-                    if (currStep % (maxStep / 100) == 0):
-                        progress = round((currStep / maxStep) * 100)
-                        print(f"| Progress: {min(progress, 100)}%\r", end="")
+                    GeneralTools.printProgress(currStep, maxStep)
                 if (not ConvertTools.containsCell(cells, [w, l, 0])):
-                    cells.append(GeneralTools.makeCell([w, l, 0], 0, -300, -1))  # floor
+                    newCells.append(GeneralTools.makeCell([w, l, 0], 0, -300, -1))  # floor
                 if (not ConvertTools.containsCell(cells, [w, l, height - 1])):
-                    cells.append(GeneralTools.makeCell([w, l, height - 1], 0, -300, -1))  # ceiling
-
-        if (showProgress): print()
-        return cells
+                    newCells.append(GeneralTools.makeCell([w, l, height - 1], 0, -300, -1))  # ceiling
+        return cells + newCells
 
     # Combines the head and the cells
     @staticmethod

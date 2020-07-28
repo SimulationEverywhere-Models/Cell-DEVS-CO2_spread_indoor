@@ -14,6 +14,7 @@ class ImageTools:
     def __init__ (self, config):
         self.tolerance = config["image"]["tolerance"]
         self.colours = config["image"]["colours"]
+        self.airColour = self.getAirColour()
         self.inputFile = config["files"]["input"]
         self.pixels = []
         self.width = self.length = 0
@@ -39,7 +40,7 @@ class ImageTools:
         self.pixels = list(image.getdata())
 
     # Correct colours that are not solid using tolerance level
-    def correctColour (self, pixel):
+    def correctColour (self, pixel, debug=False):
         pixel = list(pixel)
         for i in range(0, len(pixel)):
             if (abs(pixel[i]) < self.tolerance):
@@ -47,36 +48,63 @@ class ImageTools:
             elif (abs(pixel[i]) > self.tolerance):
                 pixel[i] = 255
             else:
-                print("correctColour: Unable to correct colour: {0}".format(pixel))
+                if (debug): print(f"WARNING: correctColour: Unable to correct colour: {pixel}")
+                # Make rough guess
+                if (pixel[i] < 255 / 2):
+                    pixel[i] = 0
+                else:
+                    pixel[i] = 255
         return pixel
 
     # Get a string representation of the given pixel's colour
-    def getColourString (self, pixel):
-        pixel = self.correctColour(pixel)
+    def getColourString (self, pixel, debug=False):
+        pixel = self.correctColour(pixel, debug=debug)
+        if (len(pixel) == 4 and pixel[3] == 0):  # Account for alpha
+            print(f"NOTE: Transparent pixel: {pixel}")
+            return self.airColour
         for i in pixel:
             if (i != 0 and i != 255):
-                return "255,255,255"
+                return self.airColour
         return str(pixel[0]) + "," + str(pixel[1]) + "," + str(pixel[2])
 
     # Turn the image's pixel's into cells
-    def makeCells (self):
+    def makeCells (self, debug=False, showProgress=False):
+        maxStep = self.width * self.length
         cells = []
         for x in range (0, self.width):
             for y in range (0, self.length):
+                if (showProgress):
+                    currStep = ((x + 1) * self.length) + (y + 1)
+                    GeneralTools.printProgress(currStep, maxStep)
                 pixel = self.pixels[(self.width * y) + x]
-                colour = self.getColourString(pixel)
-                if (colour == "255,255,255"):
+                colour = self.getColourString(pixel, debug=debug)
+                if (colour == self.airColour):
                     continue
-                counter = self.colours[colour]["counter"]
-                if (self.colours[colour]["type"] == -700):  # If the current cell is a WORKSTATION
+                counter = self.getColourProperties(colour)["counter"]
+                if (self.getColourProperties(colour)["type"] == -700):  # If the current cell is a WORKSTATION
                     counter = self.randomGen.getInt()
                 cells.append(GeneralTools.makeCell(
                     [x, y],
-                    self.colours[colour]["concentration"],
-                    self.colours[colour]["type"],
+                    self.getColourProperties(colour)["concentration"],
+                    self.getColourProperties(colour)["type"],
                     counter
                 ))
+        print(f"makeCells: number of pixels: {len(self.pixels)}")
+        print(f"makeCells: number of cells being returned: {len(cells)}")
         return cells
+
+    # Get colour properties
+    def getColourProperties (self, colour):
+        try:
+            return self.colours[colour]
+        except KeyError:
+            return self.colours[self.airColour]
+
+    # Get the colour of air
+    def getAirColour (self):
+        for colour in self.colours:
+            if (self.colours[colour]["type"] == -100):  # If the colour corresponds to white
+                return colour
 
     # Get the dimensions of an image without creating an ImageTools instance
     @staticmethod

@@ -36,6 +36,11 @@ argParser.add_argument("--no-debug",
                        help="turn off debugging/information messages",
                        dest="no_debug")
 
+argParser.add_argument("--no-img-error",
+                       action="store_true",
+                       help="turn off image parsing error messages",
+                       dest="no_img_error")
+
 args = argParser.parse_args()
 
 try:

@@ -26,6 +26,7 @@ class Control:
             sys.exit(1)
 
         debug = not args.no_debug
+        imgMsg = not args.no_img_error
 
         config = json.loads(config)  # Convert JSON string into dictionary
 
@@ -33,10 +34,10 @@ class Control:
         convertType = Control.convertType(config["files"], args.dim)
         # Input model is an image with matching dimensions
         if (convertType == "exact_image"):
-            model = Control.process_image(config, debug=debug)
+            model = Control.process_image(config, debug=debug, imgMsg=imgMsg)
         # Input model is an image with mismatched dimensions (guessing required)
         elif (convertType == "interpolate_image"):
-            model = Control.process_image(config, outDim=args.dim, debug=debug)
+            model = Control.process_image(config, outDim=args.dim, debug=debug, imgMsg=imgMsg)
         # Input model is a JSON
         elif (convertType == "json"):
             model = Control.json_2Dto3D(config)
@@ -76,13 +77,13 @@ class Control:
 
     # Convert image files to 2D or 3D formatted models (depending on configuration file)
     @staticmethod
-    def process_image (config, outDim=None, debug=False):
+    def process_image (config, outDim=None, debug=False, imgMsg=False):
         if (debug): print("Preparing tools...")
         image = ImageTools(config)  # Prepare the image tools
         if (debug): print("Loading image...")
         image.load()                # Load the image
         if (debug): print("Making cells...")
-        cells = image.makeCells()   # Make cells out of the image
+        cells = image.makeCells(debug=imgMsg, showProgress=debug)  # Make cells out of the image
 
         width, length = image.getWidth(), image.getLength()
 
@@ -98,7 +99,7 @@ class Control:
 
         # If the model is 3D, extend the walls and add a floor and ceiling
         if (config["model"]["height"] > 1):
-            if (debug): print("Extending cells...")
+            if (debug):print("Extending cells...")
             cells = ConvertTools.getExtendedCells(config["model"], cells)
             if (debug): print("Adding floor and ceiling...")
             cells = ConvertTools.addFloorCeiling(width, length, config["model"]["height"], cells, showProgress=debug)
