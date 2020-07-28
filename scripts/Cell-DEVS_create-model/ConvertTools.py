@@ -1,6 +1,7 @@
-# Tools for converting 2D models into 3D models
+# Tools for converting 2D models into 3D models and scaling cells
 # Thomas Roller
 
+import sys
 import json
 from GeneralTools import GeneralTools
 
@@ -119,13 +120,21 @@ class ConvertTools:
     # This is fairly simple as it just fills in the entire
     # length by width rectangle at the floor and ceiling levels
     @staticmethod
-    def addFloorCeiling (width, length, height, cells):
+    def addFloorCeiling (width, length, height, cells, showProgress=False):
+        maxStep = width * length
         for w in range (0, width):
             for l in range (0, length):
+                if (showProgress):
+                    currStep = ((w + 1) * length) + (l + 1)
+                    if (currStep % (maxStep / 100) == 0):
+                        progress = round((currStep / maxStep) * 100)
+                        print(f"| Progress: {min(progress, 100)}%\r", end="")
                 if (not ConvertTools.containsCell(cells, [w, l, 0])):
                     cells.append(GeneralTools.makeCell([w, l, 0], 0, -300, -1))  # floor
                 if (not ConvertTools.containsCell(cells, [w, l, height - 1])):
                     cells.append(GeneralTools.makeCell([w, l, height - 1], 0, -300, -1))  # ceiling
+
+        if (showProgress): print()
         return cells
 
     # Combines the head and the cells
@@ -138,3 +147,51 @@ class ConvertTools:
     @staticmethod
     def getString (data):
         return json.dumps(data, indent=4)
+
+    # Scale a list of cells
+    @staticmethod
+    def scaleCells (cells, orgDim, newDim, debug=False):
+        if (orgDim[0] < newDim[0] or orgDim[1] < newDim[1]):
+            if (debug): print("| ERROR: Input dimension is smaller than output (cannot extrapolate)")
+            sys.exit(1)
+
+        newCells = []
+        groups = {}
+
+        scaleX = float(newDim[0] - 1) / float(orgDim[0])
+        scaleY = float(newDim[1] - 1) / float(orgDim[1])
+        if (debug):
+            print(f"| Image dimensions: {orgDim}")
+            print(f"| Final dimensions: {newDim}")
+            print(f"| Approximate X scale factor: {round(scaleX * 100)}%")
+            print(f"| Approximate Y scale factor: {round(scaleY * 100)}%")
+
+        for cell in cells:
+            # Scale the cell_id of each cell
+            cell["cell_id"][0] = round(cell["cell_id"][0] * scaleX)
+            cell["cell_id"][1] = round(cell["cell_id"][1] * scaleY)
+
+            # Group cells with the same cell_id into a dictionary
+            currX = cell["cell_id"][0]
+            currY = cell["cell_id"][1]
+            if (f"{currX},{currY}" in groups):
+                groups[f"{currX},{currY}"].append(cell)
+            else:
+                groups[f"{currX},{currY}"] = [cell]
+
+        # Get the most representative cell from each group
+        for key in groups:
+            newCells.append(ConvertTools.getBestCell(groups[key]))
+        
+        return newCells
+
+    # Get the cell that best represents the given list
+    @staticmethod
+    def getBestCell (cells):
+        # Prefer SOURCE over WORKSTATIONS over VENTS over DOORS over WINDOWS over WALLS over AIR
+        cellTypes = [-200, -700, -600, -400, -500, -300, -100]  # in order of preference
+        bestCell = cells[0]
+        for cell in cells:
+            if (cellTypes.index(cell["state"]["type"]) < cellTypes.index(bestCell["state"]["type"])):
+                bestCell = cell
+        return bestCell

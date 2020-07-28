@@ -25,21 +25,24 @@ class Control:
             print("ERROR: Could not load configuation file")
             sys.exit(1)
 
+        debug = not args.no_debug
+
         config = json.loads(config)  # Convert JSON string into dictionary
 
         model = None
         convertType = Control.convertType(config["files"], args.dim)
         # Input model is an image with matching dimensions
         if (convertType == "exact_image"):
-            model = Control.exactImageParse(config)
+            model = Control.process_image(config, debug=debug)
         # Input model is an image with mismatched dimensions (guessing required)
-        elif (convertType == "extrapolate_image"):
-            return  # will include processing where image size and shape do not match
+        elif (convertType == "interpolate_image"):
+            model = Control.process_image(config, outDim=args.dim, debug=debug)
         # Input model is a JSON
         elif (convertType == "json"):
             model = Control.json_2Dto3D(config)
 
         # Export the JSON string
+        if (debug): print("Exporting data to file...")
         GeneralTools.export(config["files"]["output"], ConvertTools.getString(model))
 
     # Get the extension of a file
@@ -66,25 +69,39 @@ class Control:
                 return "exact_image"
             # If the user provided a specific output dimension
             else:
-                return "extrapolate_image"
+                return "interpolate_image"
         # If the extension indicates a JSON
         elif (extension == "json"):
             return "json"
 
     # Convert image files to 2D or 3D formatted models (depending on configuration file)
     @staticmethod
-    def process_exactImage (config):
+    def process_image (config, outDim=None, debug=False):
+        if (debug): print("Preparing tools...")
         image = ImageTools(config)  # Prepare the image tools
+        if (debug): print("Loading image...")
         image.load()                # Load the image
+        if (debug): print("Making cells...")
         cells = image.makeCells()   # Make cells out of the image
 
+        width, length = image.getWidth(), image.getLength()
+
+        # If scaling is required
+        if (outDim is not None):
+            if (debug): print("NOTE: Image dimensions do not match provided dimensions (inexact image processing will take place)")
+            if (debug): print("Scaling cells...")
+            cells = ConvertTools.scaleCells(cells, [width, length], outDim, debug=debug)
+            width, length = outDim
+
         # Generate the head of the model
-        head = ConvertTools.createHead(image.getWidth(), image.getLength(), config["model"])
+        head = ConvertTools.createHead(width, length, config["model"])
 
         # If the model is 3D, extend the walls and add a floor and ceiling
         if (config["model"]["height"] > 1):
+            if (debug): print("Extending cells...")
             cells = ConvertTools.getExtendedCells(config["model"], cells)
-            cells = ConvertTools.addFloorCeiling(image.getWidth(), image.getLength(), config["model"]["height"], cells)
+            if (debug): print("Adding floor and ceiling...")
+            cells = ConvertTools.addFloorCeiling(width, length, config["model"]["height"], cells, showProgress=debug)
 
         return ConvertTools.createStructure(head, cells)  # Combine the head and the cells
 
@@ -117,13 +134,3 @@ class Control:
             cells = ConvertTools.addFloorCeiling(width, length, config["model"]["height"], cells)
 
         return ConvertTools.createStructure(head, cells)  # Combine the head and the cells
-
-    # Convert
-    @staticmethod
-    def process_inexactImage (config, outDim):
-        print("NOTE: Image dimensions do not match provided dimensions (inexact image processing will take place)")
-        print("ERROR: Feature not yet implemented")
-        return  # will be removed when function implentation is complete
-
-        image = ImageTools(config)  # Prepare the image tools
-        image.load()                # Load the image

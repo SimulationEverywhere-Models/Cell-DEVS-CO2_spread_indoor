@@ -3,6 +3,7 @@
 
 # Note that the Python module "Pillow" is required
 
+import sys
 from PIL import Image
 from GeneralTools import GeneralTools
 
@@ -28,7 +29,12 @@ class ImageTools:
 
     # Load the image
     def load (self):
-        image = Image.open(self.inputFile, "r")
+        try:
+            image = Image.open(self.inputFile, "r")
+        except FileNotFoundError:
+            print("ERROR: Could not load image file")
+            sys.exit(1)
+
         self.width, self.length = image.size
         self.pixels = list(image.getdata())
 
@@ -75,4 +81,8 @@ class ImageTools:
     # Get the dimensions of an image without creating an ImageTools instance
     @staticmethod
     def getDimensions (filename):
-        return Image.open(filename, "r").size
+        try:
+            return Image.open(filename, "r").size
+        except:
+            print("ERROR: Could not load image file")
+            sys.exit(1)

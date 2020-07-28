@@ -31,6 +31,14 @@ argParser.add_argument("--dimensions",
                        help="dimensions of the output scenario (format: HOR VERT)",
                        dest="dim")
 
+argParser.add_argument("--no-debug",
+                       action="store_true",
+                       help="turn off debugging/information messages",
+                       dest="no_debug")
+
 args = argParser.parse_args()
 
-Control.start(args)
+try:
+    Control.start(args)
+except KeyboardInterrupt:
+    print("Caught interrupt -- aborting")
