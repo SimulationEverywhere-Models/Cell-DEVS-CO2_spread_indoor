@@ -34,8 +34,12 @@ class Control:
 
         config = json.loads(config)  # Convert JSON string into dictionary
 
-        model = None
         convertType = Control.convertType(config["files"], args.dim, critMsg=critMsg)
+        if (convertType is None and critMsg):
+            print("ERROR: Invalid file extension")
+            sys.exit(1)
+
+        model = None
         # Input model is an image with matching dimensions
         if (convertType == "exact_image"):
             model = Control.process_image(config, debug=debug, imgMsg=imgMsg)

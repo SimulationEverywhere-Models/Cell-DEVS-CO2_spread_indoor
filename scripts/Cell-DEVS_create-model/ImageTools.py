@@ -137,10 +137,9 @@ class ImageTools:
     # Return:
     #     the properties of the given colour
     def getColourProperties (self, colour):
-        try:
+        if (colour in self.colours):
             return self.colours[colour]
-        except KeyError:
-            return self.colours[self.airColour]
+        return self.colours[self.airColour]
 
     # Function: getAirColour
     # Purpose: get the colour of an air cell (designated in the configuration file)
