@@ -1,6 +1,6 @@
 {
     "files": {
-        "input" : "input/computer_lab_image.bmp",
+        "input" : "input/lab_scenario.json",
         "output" : "output/lab_scenario3D.json"
     },
     "model" : {
@@ -24,7 +24,8 @@
         }
     },
     "image" : {
-        "tolerance" : 50,
+        "colourTolerance" : 50,
+        "alphaTolerance" : 128,
         "colours" : {
             "255,255,255" : {
                 "concentration" : 500,

@@ -10,9 +10,16 @@ from GeneralTools import GeneralTools
 # Tools for handling images
 class ImageTools:
 
-    # Prepare variables for image loading and analysis
+    # Function: __init__
+    # Purpose: prepare variables for image loading and analysis
+    # Arguments:
+    #     self: enclosing instance (automatic, not user specified)
+    #     config: configuration file as a Python dictionary
+    # Return:
+    #     none
     def __init__ (self, config):
-        self.tolerance = config["image"]["tolerance"]
+        self.colourTolerance = config["image"]["colourTolerance"]
+        self.alphaTolerance = config["image"]["alphaTolerance"]
         self.colours = config["image"]["colours"]
         self.airColour = self.getAirColour()
         self.inputFile = config["files"]["input"]
@@ -22,33 +29,49 @@ class ImageTools:
                                                    config["model"]["counter"]["minimum"],
                                                    config["model"]["counter"]["maximum"])
 
+    # Get width of loaded image
     def getWidth (self):
         return self.width
 
+    # Get length of loaded image
     def getLength (self):
         return self.length
 
     # Load the image
-    def load (self):
+    # Function: load
+    # Purpose: load the image specified in the configuration file
+    # Arguments:
+    #     self: enclosing instance (automatic, not user specified)
+    #     debug: whether or not to show debug messages
+    # Return:
+    #     none
+    def load (self, debug=False):
         try:
             image = Image.open(self.inputFile, "r")
         except FileNotFoundError:
-            print("ERROR: Could not load image file")
+            if (debug): print(f"ERROR: Could not load image file (\"{self.inputFile}\")")
             sys.exit(1)
 
         self.width, self.length = image.size
         self.pixels = list(image.getdata())
 
-    # Correct colours that are not solid using tolerance level
+    # Function: correctColour
+    # Purpose: correct colours that are not solid using the tolerance level from the configuration file
+    # Arguments:
+    #     self: enclosing instance (automatic, not user specified)
+    #     pixel: the pixel (as a list of RGB and maybe alpha values)
+    #     debug: whether or not to show debug messages
+    # Return:
+    #     none
     def correctColour (self, pixel, debug=False):
         pixel = list(pixel)
-        for i in range(0, len(pixel)):
-            if (abs(pixel[i]) < self.tolerance):
+        for i in range(0, 3):  # only include RGB values (ignore alpha)
+            if (abs(pixel[i]) <= self.colourTolerance):
                 pixel[i] = 0
-            elif (abs(pixel[i]) > self.tolerance):
+            elif (abs(pixel[i]) >= 255 - self.colourTolerance):
                 pixel[i] = 255
             else:
-                if (debug): print(f"WARNING: correctColour: Unable to correct colour: {pixel}")
+                if (debug): print(f"| NOTE: Colour outside of tolerance (making loose estimate): {pixel}, colour {pixel[i]}")
                 # Make rough guess
                 if (pixel[i] < 255 / 2):
                     pixel[i] = 0
@@ -57,17 +80,32 @@ class ImageTools:
         return pixel
 
     # Get a string representation of the given pixel's colour
+    # Function: getColourString
+    # Purpose: 
+    # Arguments:
+    #     self: enclosing instance (automatic, not user specified)
+    #     pixel: the pixel (as a list of RGB and maybe alpha values)
+    #     debug: whether or not to show debug messages
+    # Return:
+    #     none
     def getColourString (self, pixel, debug=False):
-        pixel = self.correctColour(pixel, debug=debug)
-        if (len(pixel) == 4 and pixel[3] == 0):  # Account for alpha
-            if (debug): print(f"NOTE: Transparent pixel: {pixel}")
+        if (len(pixel) == 4 and pixel[3] <= self.alphaTolerance):  # Account for alpha
+            if (debug): print(f"| NOTE: Transparent pixel (converting to colour of air cell): {pixel}")
             return self.airColour
+        pixel = self.correctColour(pixel, debug=debug)
         for i in pixel:
             if (i != 0 and i != 255):
                 return self.airColour
         return str(pixel[0]) + "," + str(pixel[1]) + "," + str(pixel[2])
 
-    # Turn the image's pixel's into cells
+    # Function: makeCells
+    # Purpose: turn the image's pixels into cells
+    # Arguments:
+    #     self: enclosing intance (automatic, not user specified)
+    #     debug: whether or not to show debug messages
+    #     showProgress: whether or not to show progress messages
+    # Return:
+    #     list of cells
     def makeCells (self, debug=False, showProgress=False):
         maxStep = self.width * self.length
         cells = []
@@ -91,24 +129,42 @@ class ImageTools:
                 ))
         return cells
 
-    # Get colour properties
+    # Function: getColourProperties
+    # Purpose: get the properties associated with the specified colour (designated in the configuration file)
+    # Arguments:
+    #     self: enclosing instance (automatic, not user specified)
+    #     colour: the colour (as a string) being tested
+    # Return:
+    #     the properties of the given colour
     def getColourProperties (self, colour):
         try:
             return self.colours[colour]
         except KeyError:
             return self.colours[self.airColour]
 
-    # Get the colour of air
+    # Function: getAirColour
+    # Purpose: get the colour of an air cell (designated in the configuration file)
+    # Arguments:
+    #     self: enclosing instance (automatic, not user specified)
+    # Return:
+    #     string representing the colour of an air cell
     def getAirColour (self):
         for colour in self.colours:
-            if (self.colours[colour]["type"] == -100):  # If the colour corresponds to white
+            if (self.colours[colour]["type"] == -100):  # If the colour corresponds to AIR
                 return colour
 
     # Get the dimensions of an image without creating an ImageTools instance
+    # Function: getDimensions
+    # Purpose: get the dimensions of an image without creating an ImageTools instance
+    # Arguments:
+    #     filename: name of the image file to be checked
+    #     debug: whether or not to show debug messages
+    # Return:
+    #     tuple representing the size of the image
     @staticmethod
-    def getDimensions (filename):
+    def getDimensions (filename, debug=False):
         try:
             return Image.open(filename, "r").size
         except:
-            print("ERROR: Could not load image file")
+            if (debug): print(f"ERROR: Could not load image file (\"{filename}\")")
             sys.exit(1)
