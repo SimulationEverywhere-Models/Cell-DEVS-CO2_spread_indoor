@@ -1,46 +1,51 @@
-# Script to convert image files into models (2D and 3D)
-# Written by Thomas Roller
+# Program to convert images and 2D scenarios into their 2D and 3D counterparts
+# Thomas Roller
 
+import argparse
 import sys
-import json
+from Control import Control
 from ImageTools import ImageTools
-from ConvertTools import ConvertTools
-from GeneralTools import GeneralTools
 
-# Check for proper usage
-if (len(sys.argv) != 1 and len(sys.argv) != 2):
-    print("Usage: python3 convertImage.py [<config file>]")
-    sys.exit(0)
+import argparse
 
-# Get configuration filename
-configFile = "config.json"
-if (len(sys.argv) == 2):
-    configFile = sys.argv[1]
+argParser = argparse.ArgumentParser(description="Convert images and 2D CO2 scenarios into their 2D or 3D counterparts",
+                                    allow_abbrev=False)
 
-config = ""
+argParser.add_argument("config",
+                       type=str,
+                       action="store",
+                       help="path to configuration file")
+
+argParser.add_argument("--dimensions",
+                       "-d",
+                       type=int,
+                       action="store",
+                       nargs=2,
+                       help="dimensions of the output scenario (format: HOR VERT)",
+                       metavar="int",
+                       dest="dim")
+
+argParser.add_argument("--progress-msg",
+                       "-p",
+                       action="store_true",
+                       help="turn on progress messages",
+                       dest="prog_msg")
+
+argParser.add_argument("--img-msg",
+                       "-i",
+                       action="store_true",
+                       help="turn on image parsing error/information messages",
+                       dest="img_msg")
+
+argParser.add_argument("--no-crit-msg",
+                       "-c",
+                       action="store_true",
+                       help="turn off critical messages",
+                       dest="no_crit_msg")
+
+args = argParser.parse_args()
+
 try:
-    # Load configuration from file
-    with open(configFile, "r") as f:
-        config = f.read()
-except FileNotFoundError:
-    print("ERROR: Could not load configuation file")
-    sys.exit(1)
-
-config = json.loads(config)  # Convert JSON string into dictionary
-
-image = ImageTools(config)  # Prepare the image tools
-image.load()                # Load the image
-cells = image.makeCells()   # Make cells out of the image
-
-# Generate the head of the model
-head = ConvertTools.createHead(image.getWidth(), image.getLength(), config["model"])
-
-# If the model is 3D, extend the walls and add a floor and ceiling
-if (config["model"]["height"] > 1):
-    cells = ConvertTools.getExtendedCells(config["model"], cells)
-    cells = ConvertTools.addFloorCeiling(image.getWidth(), image.getLength(), config["model"]["height"], cells)
-
-model = ConvertTools.createStructure(head, cells)  # Combine the head and the cells
-
-# Export the JSON string
-GeneralTools.export(config["files"]["output"], ConvertTools.getString(model))
+    Control.start(args)
+except KeyboardInterrupt:
+    if (not args.no_crit_msg): print("Caught interrupt")
