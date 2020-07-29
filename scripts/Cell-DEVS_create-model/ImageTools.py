@@ -89,8 +89,6 @@ class ImageTools:
                     self.getColourProperties(colour)["type"],
                     counter
                 ))
-        print(f"makeCells: number of pixels: {len(self.pixels)}")
-        print(f"makeCells: number of cells being returned: {len(cells)}")
         return cells
 
     # Get colour properties

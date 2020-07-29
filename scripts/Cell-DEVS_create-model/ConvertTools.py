@@ -46,14 +46,6 @@ class ConvertTools:
         }
         return data
 
-    # Determines if a cell with the given coordinates is already in the dictionary
-    @staticmethod
-    def containsCell (cells, coords):
-        for cell in cells:
-            if (cell["cell_id"] == coords):
-                return True
-        return False
-
     # Get the heights at which to place each cell type
     # Returns a list where the first element is the lowest cell it may appear in and
     # the second element is one above the highest cell it may appear in
@@ -123,14 +115,21 @@ class ConvertTools:
     def addFloorCeiling (width, length, height, cells, showProgress=False):
         maxStep = width * length
         newCells = []
+
+        # Add cells that are on the level of the floor and ceiling to a set to improve membership lookup time
+        existingCells = set()
+        for cell in cells:
+            if (cell["cell_id"][2] == 0 or cell["cell_id"][2] == height - 1):
+                existingCells.add(str(cell["cell_id"]))
+
         for w in range (0, width):
             for l in range (0, length):
                 if (showProgress):
                     currStep = ((w + 1) * length) + (l + 1)
                     GeneralTools.printProgress(currStep, maxStep)
-                if (not ConvertTools.containsCell(cells, [w, l, 0])):
+                if (not( str([w, l, 0]) in existingCells)):
                     newCells.append(GeneralTools.makeCell([w, l, 0], 0, -300, -1))  # floor
-                if (not ConvertTools.containsCell(cells, [w, l, height - 1])):
+                if (not( str([w, l, height - 1]) in existingCells)):
                     newCells.append(GeneralTools.makeCell([w, l, height - 1], 0, -300, -1))  # ceiling
         return cells + newCells
 
