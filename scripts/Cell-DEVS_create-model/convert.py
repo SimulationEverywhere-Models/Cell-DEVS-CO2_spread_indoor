@@ -1,4 +1,4 @@
-# Script to convert image files into models (2D and 3D)
+# Program to convert images and 2D scenarios into their 2D and 3D counterparts
 # Thomas Roller
 
 import argparse
@@ -8,7 +8,7 @@ from ImageTools import ImageTools
 
 import argparse
 
-argParser = argparse.ArgumentParser(description="Convert images and 2D models into their 2D or 3D counterparts",
+argParser = argparse.ArgumentParser(description="Convert images and 2D CO2 scenarios into their 2D or 3D counterparts",
                                     allow_abbrev=False)
 
 argParser.add_argument("config",
@@ -28,19 +28,19 @@ argParser.add_argument("--dimensions",
 argParser.add_argument("--progress-msg",
                        "-p",
                        action="store_true",
-                       help="turn on progress messages (off by default)",
+                       help="turn on progress messages",
                        dest="prog_msg")
 
 argParser.add_argument("--img-msg",
                        "-i",
                        action="store_true",
-                       help="turn on image parsing error/information messages (off by default)",
+                       help="turn on image parsing error/information messages",
                        dest="img_msg")
 
 argParser.add_argument("--no-crit-msg",
                        "-c",
                        action="store_true",
-                       help="turn off critical messages (on by default)",
+                       help="turn off critical messages",
                        dest="no_crit_msg")
 
 args = argParser.parse_args()
