@@ -60,7 +60,7 @@ class ImageTools:
     def getColourString (self, pixel, debug=False):
         pixel = self.correctColour(pixel, debug=debug)
         if (len(pixel) == 4 and pixel[3] == 0):  # Account for alpha
-            print(f"NOTE: Transparent pixel: {pixel}")
+            if (debug): print(f"NOTE: Transparent pixel: {pixel}")
             return self.airColour
         for i in pixel:
             if (i != 0 and i != 255):
