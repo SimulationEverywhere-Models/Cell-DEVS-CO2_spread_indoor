@@ -63,6 +63,9 @@ using logger_top=logger::multilogger<state, log_messages, global_time_mes, globa
 
 
 int main(int argc, char ** argv) {
+	//sets the seed for the random number generator
+    srand(time(NULL));
+
     if (argc < 2) {
         cout << "Program used with wrong parameters. The program must be invoked as follows:";
         cout << argv[0] << " SCENARIO_CONFIG.json [MAX_SIMULATION_TIME (default: 500)]" << endl;
@@ -77,7 +80,9 @@ int main(int argc, char ** argv) {
     std::shared_ptr<cadmium::dynamic::modeling::coupled<TIME>> t = std::make_shared<co2_coupled<TIME>>(test);
 
     cadmium::dynamic::engine::runner<TIME, logger_top> r(t, {0});
-    float sim_time = (argc > 2)? atof(argv[2]) : 500;
+    cout<<"Model started"<<endl;
+    float sim_time = (argc > 2)? atof(argv[2]) : 60;
     r.run_until(sim_time);
+    cout<<"Simulation finished"<<endl;
     return 0;
 }
