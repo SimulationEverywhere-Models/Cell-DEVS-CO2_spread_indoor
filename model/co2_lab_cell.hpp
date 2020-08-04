@@ -38,6 +38,18 @@
 using nlohmann::json;
 using namespace cadmium::celldevs;
 
+// Model Variables
+int totalStudents = 3; //Total CO2_Source in the model
+int studentGenerateCount = 10; //Student generate speed (n count/student)
+
+std::list<std::pair<char,std::tuple<int,int,int>>> nextActionList; //List include the next action for CO2_Source movement <action(+:Appear CO2_Source;-:Remove CO2_Source),<xPosition,yPosition>>
+std::list<std::pair<std::pair<int,char>,std::tuple<int,int,int>>> studentsList; //List include all CO2_Source that generated <<StudentID,state(+:Join;-:Leaving)>,<xPosition,yPosition>>
+
+std::list<std::pair<int,std::tuple<int,int,int>>> workstationsList; //List include the information of exist workstations <workStationID,<xPosition,yPosition>>
+int workstationNumber = 0; //Total number of exist workstations
+
+int counter = 0; //counter for studentGenerateCount
+int studentGenerated = 0; //Record the number of students the already generated
 
 /************************************/
 /******COMPLEX STATE STRUCTURE*******/
@@ -65,9 +77,21 @@ std::ostream &operator << (std::ostream &os, const co2 &x) {
 
 // Required for creating co2 objects from JSON file
 void from_json(const json& j, co2 &s) {
+    std::pair<int,std::tuple<int,int,int>> workstationInfo;
+    int WSLoc[3] = {-1,-1,-1};
     j.at("counter").get_to(s.counter);
     j.at("concentration").get_to(s.concentration);
     j.at("type").get_to(s.type);
+    if(s.type == WORKSTATION){
+        j.at("cell_id").get_to(WSLoc);
+        workstationInfo.first = workstationNumber;
+        std::get<0>(workstationInfo.second) = WSLoc[0];
+        std::get<1>(workstationInfo.second) = WSLoc[1];
+		std::get<2>(workstationInfo.second) = WSLoc[2];
+
+        workstationNumber++;
+        workstationsList.push_back(workstationInfo);
+    }
 }
 
 /************************************/
@@ -102,7 +126,7 @@ public:
     using grid_cell<T, co2, int>::neighbors;
 
     using config_type = conc;  // IMPORTANT FOR THE JSON   
-    float  concentration_increase; //// CO2 sources have their concentration continually increased
+    float concentration_increase; //// CO2 sources have their concentration continually increased
     int base; //CO2 base level
     int resp_time; //Time used to calculate the concentration inscrease
     int window_conc; //CO2 level at window
@@ -124,6 +148,12 @@ public:
 
     co2 local_computation() const override {
         co2 new_state = state.current_state;
+
+        std::tuple<int,int,int> currentLocation;
+        std::get<0>(currentLocation) = this->map.location[0];
+        std::get<1>(currentLocation) = this->map.location[1];
+		std::get<2>(currentLocation) = this->map.location[2];
+
         switch(state.current_state.type){
             case IMPERMEABLE_STRUCTURE: 
                 new_state.concentration = 0;
@@ -137,9 +167,9 @@ public:
             case VENTILATION:
                 new_state.concentration = vent_conc;
                 break;
-            case AIR:{
+            case WORKSTATION:{
                 int concentration = 0;
-                int num_neighbors = 0;                
+                int num_neighbors = 0;
                 for(auto neighbors: state.neighbors_state) {
                     if( neighbors.second.concentration < 0){
                         assert(false && "co2 concentration cannot be negative");
@@ -152,9 +182,9 @@ public:
                 new_state.concentration = concentration/num_neighbors;
                 break;             
             }
-            case WORKSTATION:{
+            case AIR:{
                 int concentration = 0;
-                int num_neighbors = 0;                
+                int num_neighbors = 0;
                 for(auto neighbors: state.neighbors_state) {
                     if( neighbors.second.concentration < 0){
                         assert(false && "co2 concentration cannot be negative");
@@ -165,14 +195,39 @@ public:
                     }
                 }
                 new_state.concentration = concentration/num_neighbors;
-                
-                    
-                if (state.current_state.counter <= 30) { //TODO parameterize
-                    new_state.counter += 1;                   
+
+                if (counter == 0 && studentGenerated < totalStudents && studentGenerated < workstationNumber){
+                    if(std::get<0>(currentLocation) == 32&& std::get<1>(currentLocation) == 8 && std::get<2>(currentLocation) == 4){ // CO2_Source Generation Location (32,8)
+
+                        //Given student ID and record the location
+                        std::pair<std::pair<int,char>,std::tuple<int,int,int>> studentID;
+                        studentID.first.first = studentGenerated;
+                        studentID.first.second = '+';
+                        studentID.second = currentLocation;
+                        studentsList.push_back(studentID);
+
+                        //Arrange the next action
+                        std::pair<char,std::tuple<int,int,int>> newAction;
+                        newAction.first = '-';
+                        newAction.second = currentLocation;
+                        nextActionList.push_back(newAction);
+
+                        studentGenerated++;
+                        new_state.type = CO2_SOURCE;
+                    }
                 }
 
-                if (state.current_state.counter == 30){
-                    new_state.type = CO2_SOURCE; 
+                //Appear CO2_Source at currentLocation
+                if(nextActionList.front().first == '+' && currentLocation == nextActionList.front().second) {
+
+                    //Arrange the next action
+                    std::pair<char,std::tuple<int,int,int>> newAction;
+                    newAction.first = '-';
+                    newAction.second = currentLocation;
+                    nextActionList.push_back(newAction);
+
+                    nextActionList.pop_front();
+                    new_state.type = CO2_SOURCE;
                 }
                 break;
             }
@@ -180,19 +235,49 @@ public:
                 int concentration = 0;
                 int num_neighbors = 0;
                 for(auto neighbors: state.neighbors_state) {
-                  if( neighbors.second.concentration < 0){
+                    if( neighbors.second.concentration < 0){
                         assert(false && "co2 concentration cannot be negative");
                     }
-                      if(neighbors.second.type != IMPERMEABLE_STRUCTURE){
+                    if(neighbors.second.type != IMPERMEABLE_STRUCTURE){
                         concentration += neighbors.second.concentration;
                         num_neighbors +=1;
-                    }               
+                    }
                 }
-                
+
                 new_state.concentration = (concentration/num_neighbors) + (concentration_increase);
                 new_state.counter += 1;
-                if (state.current_state.counter == 250) { //TODO parameterize
-                    new_state.type = WORKSTATION; //The student left. The place is free.
+
+                //Remove CO2_Source at currentLocation
+                if(nextActionList.front().first == '-' && currentLocation == nextActionList.front().second) {
+                    std::list<std::pair<std::pair<int, char>, std::tuple<int, int, int>>>::iterator i;
+                    for (i = studentsList.begin(); i != studentsList.end(); i++) {
+                        if (i->second == currentLocation) { //Find the corresponding student
+                            if(state.current_state.counter >= 1500){
+                                i->first.second = '-';
+                            }
+                            std::tuple<int, int, int> nextLocation = setNextRoute(currentLocation, i->first);
+                            std::pair<char,std::tuple<int,int,int>> newAction;
+                            i->second = nextLocation;
+
+                            if(nextLocation == currentLocation){
+                                //Arrangement next action
+                                newAction.first = '-';
+                                newAction.second = nextLocation;
+                                nextActionList.push_back(newAction);
+                            }else if(std::get<0>(nextLocation) == -1 && std::get<1>(nextLocation) == -1 && std::get<2>(nextLocation)== -1){
+                                new_state.type = AIR;
+                            }else {
+                                //Arrangement next action
+                                newAction.first = '+';
+                                newAction.second = nextLocation;
+                                nextActionList.push_back(newAction);
+
+                                new_state.type = AIR;
+                            }
+                            counter = (counter + 1) % studentGenerateCount;
+                            nextActionList.pop_front();
+                        }
+                    }
                 }
                 break;
             }
@@ -205,7 +290,172 @@ public:
 
     }
 
-    
+    /*
+     * Calculate the position after the movement
+     *
+     * return: nextLocation
+     */
+    [[nodiscard]] std::tuple<int,int,int> setNextRoute(std::tuple<int,int,int> location, std::pair<int, char> studentIDNumber) const {
+        std::tuple<int, int, int> nextLocation;
+        std::tuple<int, int, int> destination;
+        std::tuple<int, int, int> locationChange;
+        int destinationWSNum = studentIDNumber.first % workstationNumber;
+
+        if(studentIDNumber.second == '-'){
+            std::get<0>(destination) = 32;
+            std::get<1>(destination) = 8;
+			std::get<2>(destination) = 4;
+
+            if(doorNearby(destination)){
+                std::get<0>(nextLocation) = -1;
+                std::get<1>(nextLocation) = -1;
+				std::get<2>(nextLocation) = -1;
+                return nextLocation;
+            }
+        }else {
+            //std::get destination workstation location
+            for (auto const i:workstationsList) {
+                if (i.first == destinationWSNum) {
+                    destination = i.second;
+                }
+            }
+
+            if(WSNearby(destination)){
+                nextLocation = location;
+                return nextLocation;
+            }
+        }
+
+        int x_diff = abs(std::get<0>(location) - std::get<0>(destination));
+        int y_diff = abs(std::get<1>(location) - std::get<1>(destination));
+
+        if(x_diff >= y_diff) { // x as priority direction
+            if (std::get<0>(destination) < std::get<0>(location)) { //move left
+                locationChange = navigation(location,'x','-');
+            }else{//move right
+                locationChange = navigation(location,'x','+');
+            }
+        }else{ // y as priority direction
+            if (std::get<1>(destination) < std::get<1>(location)) { //move up
+                locationChange = navigation(location,'y','-');
+            }else{//move down
+                locationChange = navigation(location,'y','+');
+            }
+        }
+
+        std::get<0>(nextLocation) = std::get<0>(location) + std::get<0>(locationChange);
+        std::get<1>(nextLocation) = std::get<1>(location) + std::get<1>(locationChange);
+        std::get<2>(nextLocation) = std::get<2>(location) + std::get<2>(locationChange);
+
+        return nextLocation;
+    }
+
+    /*
+     * Check if the destination workstation is nearby
+     */
+    [[nodiscard]] bool WSNearby(std::tuple<int, int, int> destination) const {
+        for(auto const neighbors: state.neighbors_state) {
+            if(neighbors.second.type == WORKSTATION) {
+                if (neighbors.first[0] == std::get<0>(destination)) {
+                    if (neighbors.first[1] == std::get<1>(destination)) {
+						if(neighbors.first[2] ==  std::get<2>(destination)){
+							return true;
+						}
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    /*
+     * Check if the destination DOOR is nearby
+     */
+    [[nodiscard]] bool doorNearby(std::tuple<int, int, int> destination) const{
+        for(auto const neighbors: state.neighbors_state) {
+            //if(neighbors.second.type == DOOR) {
+                if (neighbors.first[0] == std::get<0>(destination)) {
+                    if (neighbors.first[1] == std::get<1>(destination)) {
+						if( neighbors.first[2] == std::get<2>(destination)){
+							return true;
+						}
+                    }
+                }
+            //}
+        }
+        return false;
+    }
+
+    /*
+     * Using movement rules to do the navigation
+     *
+     * return: the location change
+     */
+    [[nodiscard]] std::tuple<int,int,int> navigation(std::tuple<int,int,int> location, char priority, char direction) const {
+        std::tuple<int,int,int> locationChange;
+        locationChange = std::make_tuple(0,0,0);
+
+        int change;
+        if(direction == '-'){
+            change = -1;
+        } else{
+            change = 1;
+        }
+
+        if(priority == 'x'){
+            if(moveCheck(std::get<0>(location) + change, std::get<1>(location))){
+                std::get<0>(locationChange) = change;
+            }else if(moveCheck(std::get<0>(location), std::get<1>(location) + change)){
+                std::get<1>(locationChange) = change;
+            }else if(moveCheck(std::get<0>(location), std::get<1>(location) - change)){
+                std::get<1>(locationChange) = 0 - change;
+            }else if(moveCheck(std::get<0>(location) - change, std::get<1>(location))){
+                std::get<0>(locationChange) = change;
+            }
+        }else{
+            if(moveCheck(std::get<0>(location), std::get<1>(location) + change)){
+                std::get<1>(locationChange) = change;
+            }else if(moveCheck(std::get<0>(location) + change, std::get<1>(location))){
+                std::get<0>(locationChange) = change;
+            }else if(moveCheck(std::get<0>(location) - change, std::get<1>(location))){
+                std::get<0>(locationChange) = 0 - change;
+            }else if(moveCheck(std::get<0>(location), std::get<1>(location) - change)){
+                std::get<1>(locationChange) = change;
+            }
+        }
+        return locationChange;
+    }
+
+    /*
+     * Check if the next location is occupied
+     */
+    [[nodiscard]] bool moveCheck(int xNext,int yNext) const {
+        bool moveCheck = false;
+        for(auto const neighbors: state.neighbors_state) {
+            if(neighbors.first[0] == xNext){
+                if(neighbors.first[1] == yNext){
+					if(neighbors.first[2] == 4){
+						if(neighbors.second.type == AIR) {
+							moveCheck = true;
+						}
+					}
+                }
+            }
+        }
+
+        for(auto const student: studentsList){
+            if(std::get<0>(student.second) == xNext){
+                if(std::get<1>(student.second) == yNext){
+					if(std::get<2>(student.second) == 3){
+						moveCheck = false;
+					}
+                }
+            }
+        }
+
+        return moveCheck;
+    }
+
     // It returns the delay to communicate cell's new state.
     T output_delay(co2 const &cell_state) const override {
         switch(cell_state.type){

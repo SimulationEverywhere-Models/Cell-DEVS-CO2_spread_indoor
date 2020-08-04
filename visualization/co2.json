@@ -1,18 +1,28 @@
 {
     "model": "CO2_model",
-    "size": [38, 57, 1],
+    "size": [38,57,13],
     "ports": [{
-            "name": "counter",
-            "style": 0
+            "name": "counter"
         }, {
-            "name": "CO2 level",
-            "style": 1
+            "name": "CO2 level"
         }, {
-            "name": "map",
-            "style": 2
+            "name": "map"
         }
     ],
-
+    "layers": [{
+        "z": 4,
+        "ports": ["counter"],
+        "style": 0
+    },{
+        "z": 4,
+        "ports": ["CO2 level"],
+        "style": 1
+    },{
+        "z": 4,
+        "ports": ["map"],
+        "style": 2
+    }
+    ],
     "styles": [ [{
                 "start": -100,
                 "end": -1,
