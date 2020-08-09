@@ -38,11 +38,7 @@
 using nlohmann::json;
 using namespace cadmium::celldevs;
 
-std::list<std::pair<char,std::pair<int,int>>> nextCO2Position; //List include the next action for CO2_Source movement <action(+:Appear CO2_Source;-:Remove CO2_Source),<xPosition,yPosition>>
-std::list<std::pair<int,int>> lastLocation; // used for the previous location visited
-static int steps = 0; //counting the steps to pause and start the movement again
-bool flag = true; // use to check whether to move or not
-
+std::list<std::pair<char,std::pair<int,int>>> nextActionList;
 
 /************************************/
 /******COMPLEX STATE STRUCTURE*******/
@@ -131,7 +127,7 @@ public:
             intiAction.first = '-';
             intiAction.second.first = cell_id[0];
             intiAction.second.second = cell_id[1];
-            nextCO2Position.push_back(intiAction);
+            nextActionList.push_back(intiAction);
         }
 
     }
@@ -170,15 +166,15 @@ public:
                 }
                 new_state.concentration = concentration/num_neighbors;
 
-                if(nextCO2Position.front().first == '+' || flag) {
-                    if (currentLocation == nextCO2Position.front().second) {
+                if(nextActionList.front().first == '+') {
+                    if (currentLocation == nextActionList.front().second) {
                         //Arrangement next action
                         std::pair<char, std::pair<int, int>> newAction;
                         newAction.first = '-';
                         newAction.second = currentLocation;
-                        nextCO2Position.push_back(newAction);
+                        nextActionList.push_back(newAction);
 
-                        nextCO2Position.pop_front();
+                        nextActionList.pop_front();
                         new_state.type = CO2_SOURCE;
                     }
                 }
@@ -204,7 +200,7 @@ public:
             case CO2_SOURCE:{
                 int concentration = 0;
                 int num_neighbors = 0;
-                steps +=1; //updates steps every time
+
                 for(auto neighbors: state.neighbors_state) {
                     if( neighbors.second.concentration < 0){
                         assert(false && "co2 concentration cannot be negative");
@@ -218,26 +214,16 @@ public:
                 new_state.concentration = (concentration/num_neighbors) + (concentration_increase);
                 new_state.counter += 1;
 
-                if (flag) {
-                    if (nextCO2Position.front().first == '-' && currentLocation == nextCO2Position.front().second) {
-                        std::pair<char, std::pair<int, int>> newAction;
-                        std::pair<int, int> nextLocation = setNextRoute(currentLocation);
+                if (nextActionList.front().first == '-' && currentLocation == nextActionList.front().second) {
+                    std::pair<char, std::pair<int, int>> newAction;
+                    std::pair<int, int> nextLocation = setNextRoute(currentLocation);
 
-                        newAction.first = '+';
-                        newAction.second = nextLocation;
-                        lastLocation.push_back(nextLocation);
-                        nextCO2Position.push_back(newAction);
+                    newAction.first = '+';
+                    newAction.second = nextLocation;
+                    nextActionList.push_back(newAction);
 
-                        nextCO2Position.pop_front();
-                        new_state.type = AIR;
-                    }
-                }
-
-                if(steps==5){ //flag change for stopping, work in progress
-                    flag= false;
-                }else if(steps ==20){
-                    flag = true;
-                    steps = 0;
+                    nextActionList.pop_front();
+                    new_state.type = AIR;
                 }
                 break;
             }
@@ -245,36 +231,36 @@ public:
                 assert(false && "should never happen");
             }
         }
-
         return new_state;
-
     }
 
-
+    //set route to move using random number for random movement
     [[nodiscard]] std::pair<int,int> setNextRoute(std::pair<int,int> location) const {
         std::pair<int, int> nextLocation;
         std::pair<int, int> locationChange;
-        int random_number = rand()% 10;
 
-        if (random_number >= 0 && random_number <= 2 ) { //move left
+        int random_number = rand()% 100;
+
+        if (random_number >= 0 && random_number <= 20 ) { //move left
             locationChange = navigation(location,'x','-');
         }
-        else if (random_number >= 3 && random_number <= 5){//move right
+        else if (random_number >= 30 && random_number<= 40){//move right
             locationChange = navigation(location,'x','+');
         }
 
-        else if (random_number >= 7 && random_number <= 6) { //move up
+        else if (random_number >= 50 && random_number <= 80) { //move up
             locationChange = navigation(location,'y','-');
         }
-        else {//move down
+        else{//move down
             locationChange = navigation(location,'y','+');
         }
-
         nextLocation.first = location.first + locationChange.first;
         nextLocation.second = location.second + locationChange.second;
 
         return nextLocation;
     }
+
+    //navigate the path choosing the priority and the direction
     [[nodiscard]] std::pair<int,int> navigation(std::pair<int,int> location, char priority, char direction) const {
         std::pair<int,int> locationChange;
         locationChange.first = 0;
@@ -289,14 +275,13 @@ public:
 
         if(priority == 'x'){
             if(moveCheck(location.first + change, location.second)){
-
                 locationChange.first = change;
             }else if(moveCheck(location.first, location.second + change)){
                 locationChange.second = change;
             }else if(moveCheck(location.first, location.second - change)){
-                locationChange.second = 0 - change;
+                locationChange.second =0 - change;
             }else if(moveCheck(location.first - change, location.second)){
-                locationChange.first = change;
+                locationChange.first = 0 - change;
             }
         }else{
             if(moveCheck(location.first, location.second + change)){
@@ -306,36 +291,39 @@ public:
             }else if(moveCheck(location.first - change, location.second)){
                 locationChange.first = 0 - change;
             }else if(moveCheck(location.first, location.second - change)){
-                locationChange.second = change;
+                locationChange.second = 0-change;
             }
         }
         return locationChange;
     }
 
+    //check the next location safe to move if cell_type is AIR
     [[nodiscard]] bool moveCheck(int xNext,int yNext) const {
         bool moveCheck = false;
         for(auto const neighbors: state.neighbors_state) {
             if(neighbors.first[0] == xNext){
                 if(neighbors.first[1] == yNext){
                     if(neighbors.second.type == AIR) {
-                        moveCheck = true;
+                       if(checkPreviousLocation(xNext,yNext)) {
+                            moveCheck = true;
+                        }
                     }
                 }
             }
         }
-
         return moveCheck;
     }
 
-    [[nodiscard]] bool checkPreviousLocation(std::pair<int,int> location) const {
-        for (auto checklastlocation: lastLocation){
-            if(checklastlocation.first == location.first && checklastlocation.second == location.second){
-                //count++;
-                return true;
+    //check the collision between the CO2_sources
+    [[nodiscard]] bool checkPreviousLocation(int xNextPos, int yNextPos) const {
+        for (auto checklastlocation: nextActionList){
+            if(checklastlocation.second.first == xNextPos && checklastlocation.second.second == yNextPos){
+                return false;
             }
         }
-        return false;
+        return true;
     }
+
     // It returns the delay to communicate cell's new state.
     T output_delay(co2 const &cell_state) const override {
         switch(cell_state.type){
