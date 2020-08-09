@@ -16,7 +16,7 @@
             "CO2_cell": {
                 "conc_increase": 143.2,
                 "base": 500,
-                "resp_time": 5,
+                "resp_time": 1,
                 "window_conc": 400,
                 "vent_conc": 300
             }
