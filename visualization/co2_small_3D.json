@@ -1,6 +1,6 @@
 {
     "model": "CO2_model",
-    "size": [43, 40, 1],
+    "size": [43, 40, 8],
     "ports": [{
             "name": "counter",
             "style": 0

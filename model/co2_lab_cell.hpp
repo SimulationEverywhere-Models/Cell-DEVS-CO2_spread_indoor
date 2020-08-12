@@ -38,7 +38,7 @@
 using nlohmann::json;
 using namespace cadmium::celldevs;
 
-std::list<std::pair<char,std::pair<int,int>>> nextActionList;
+std::list<std::pair<char,std::tuple<int,int,int>>> nextCO2Position; //List include the next action for CO2_Source movement <action(+:Appear CO2_Source;-:Remove CO2_Source),<xPosition,yPosition>>
 
 /************************************/
 /******COMPLEX STATE STRUCTURE*******/
@@ -123,11 +123,12 @@ public:
         vent_conc = config.vent_conc;
 
         if(initial_state.type == CO2_SOURCE) {
-            std::pair<char, std::pair<int, int>> intiAction;
+            std::pair<char, std::tuple<int, int, int>> intiAction;
             intiAction.first = '-';
-            intiAction.second.first = cell_id[0];
-            intiAction.second.second = cell_id[1];
-            nextActionList.push_back(intiAction);
+            std::get<0>(intiAction.second) = cell_id[0];
+            std::get<1>(intiAction.second) = cell_id[1];
+            std::get<2>(intiAction.second) = cell_id[2];
+            nextCO2Position.push_back(intiAction);
         }
 
     }
@@ -135,9 +136,10 @@ public:
     co2 local_computation() const override {
         co2 new_state = state.current_state;
 
-        std::pair<int,int> currentLocation;
-        currentLocation.first = this->map.location[0];
-        currentLocation.second = this->map.location[1];
+        std::tuple<int,int, int> currentLocation;
+        std::get<0>(currentLocation) = this->map.location[0];
+        std::get<1>(currentLocation) = this->map.location[1];
+        std::get<2>(currentLocation) = this->map.location[2];
 
         switch(state.current_state.type){
             case IMPERMEABLE_STRUCTURE:
@@ -166,15 +168,15 @@ public:
                 }
                 new_state.concentration = concentration/num_neighbors;
 
-                if(nextActionList.front().first == '+') {
-                    if (currentLocation == nextActionList.front().second) {
+                if(nextCO2Position.front().first == '+') {
+                    if (currentLocation == nextCO2Position.front().second) {
                         //Arrangement next action
-                        std::pair<char, std::pair<int, int>> newAction;
+                        std::pair<char, std::tuple<int, int, int>> newAction;
                         newAction.first = '-';
                         newAction.second = currentLocation;
-                        nextActionList.push_back(newAction);
+                        nextCO2Position.push_back(newAction);
 
-                        nextActionList.pop_front();
+                        nextCO2Position.pop_front();
                         new_state.type = CO2_SOURCE;
                     }
                 }
@@ -214,30 +216,33 @@ public:
                 new_state.concentration = (concentration/num_neighbors) + (concentration_increase);
                 new_state.counter += 1;
 
-                if (nextActionList.front().first == '-' && currentLocation == nextActionList.front().second) {
-                    std::pair<char, std::pair<int, int>> newAction;
-                    std::pair<int, int> nextLocation = setNextRoute(currentLocation);
+                if (nextCO2Position.front().first == '-' && currentLocation == nextCO2Position.front().second) {
+                    std::pair<char, std::tuple<int, int, int>> newAction;
+                    std::tuple<int, int, int> nextLocation = setNextRoute(currentLocation);
 
                     newAction.first = '+';
                     newAction.second = nextLocation;
-                    nextActionList.push_back(newAction);
+                    nextCO2Position.push_back(newAction);
 
-                    nextActionList.pop_front();
+                    nextCO2Position.pop_front();
                     new_state.type = AIR;
                 }
+
                 break;
             }
             default:{
                 assert(false && "should never happen");
             }
         }
+
         return new_state;
+
     }
 
     //set route to move using random number for random movement
-    [[nodiscard]] std::pair<int,int> setNextRoute(std::pair<int,int> location) const {
-        std::pair<int, int> nextLocation;
-        std::pair<int, int> locationChange;
+    [[nodiscard]] std::tuple<int,int,int> setNextRoute(std::tuple<int,int, int> location) const {
+        std::tuple<int, int, int> nextLocation;
+        std::tuple<int, int, int> locationChange;
 
         int random_number = rand()% 100;
 
@@ -254,17 +259,18 @@ public:
         else{//move down
             locationChange = navigation(location,'y','+');
         }
-        nextLocation.first = location.first + locationChange.first;
-        nextLocation.second = location.second + locationChange.second;
+
+        std::get<0>(nextLocation) = std::get<0>(location) + std::get<0>(locationChange);
+        std::get<1>(nextLocation) = std::get<1>(location) + std::get<1>(locationChange);
+        std::get<2>(nextLocation) = std::get<2>(location) + std::get<2>(locationChange);
 
         return nextLocation;
     }
 
     //navigate the path choosing the priority and the direction
-    [[nodiscard]] std::pair<int,int> navigation(std::pair<int,int> location, char priority, char direction) const {
-        std::pair<int,int> locationChange;
-        locationChange.first = 0;
-        locationChange.second = 0;
+    [[nodiscard]] std::tuple<int,int,int> navigation(std::tuple<int,int,int> location, char priority, char direction) const {
+        std::tuple<int,int,int> locationChange;
+        locationChange = std::make_tuple(0,0,0);
 
         int change;
         if(direction == '-'){
@@ -274,24 +280,24 @@ public:
         }
 
         if(priority == 'x'){
-            if(moveCheck(location.first + change, location.second)){
-                locationChange.first = change;
-            }else if(moveCheck(location.first, location.second + change)){
-                locationChange.second = change;
-            }else if(moveCheck(location.first, location.second - change)){
-                locationChange.second =0 - change;
-            }else if(moveCheck(location.first - change, location.second)){
-                locationChange.first = 0 - change;
+            if(moveCheck(std::get<0>(location) + change, std::get<1>(location))){
+                std::get<0>(locationChange) = change;
+            }else if(moveCheck(std::get<0>(location), std::get<1>(location) + change)){
+                std::get<1>(locationChange) = change;
+            }else if(moveCheck(std::get<0>(location), std::get<1>(location) - change)){
+                std::get<1>(locationChange) = 0 - change;
+            }else if(moveCheck(std::get<0>(location) - change, std::get<1>(location))){
+                std::get<0>(locationChange) = change;
             }
         }else{
-            if(moveCheck(location.first, location.second + change)){
-                locationChange.second = change;
-            }else if(moveCheck(location.first + change, location.second)){
-                locationChange.first = change;
-            }else if(moveCheck(location.first - change, location.second)){
-                locationChange.first = 0 - change;
-            }else if(moveCheck(location.first, location.second - change)){
-                locationChange.second = 0-change;
+            if(moveCheck(std::get<0>(location), std::get<1>(location) + change)){
+                std::get<1>(locationChange) = change;
+            }else if(moveCheck(std::get<0>(location) + change, std::get<1>(location))){
+                std::get<0>(locationChange) = change;
+            }else if(moveCheck(std::get<0>(location) - change, std::get<1>(location))){
+                std::get<0>(locationChange) = 0 - change;
+            }else if(moveCheck(std::get<0>(location), std::get<1>(location) - change)){
+                std::get<1>(locationChange) = change;
             }
         }
         return locationChange;
@@ -304,7 +310,7 @@ public:
             if(neighbors.first[0] == xNext){
                 if(neighbors.first[1] == yNext){
                     if(neighbors.second.type == AIR) {
-                       if(checkPreviousLocation(xNext,yNext)) {
+                        if(checkPreviousLocation(xNext,yNext)) {
                             moveCheck = true;
                         }
                     }
@@ -316,8 +322,8 @@ public:
 
     //check the collision between the CO2_sources
     [[nodiscard]] bool checkPreviousLocation(int xNextPos, int yNextPos) const {
-        for (auto checklastlocation: nextActionList){
-            if(checklastlocation.second.first == xNextPos && checklastlocation.second.second == yNextPos){
+        for (auto checklastlocation: nextCO2Position){
+            if(std::get<0>(checklastlocation.second) == xNextPos && std::get<1>(checklastlocation.second) == yNextPos){
                 return false;
             }
         }
