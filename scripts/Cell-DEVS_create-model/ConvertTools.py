@@ -26,20 +26,24 @@ class ConvertTools:
             "scenario" : {
                 "shape" : coords,
                 "wrapped" : False,
-                "default_delay" : "transport",
-                "default_cell_type" : "CO2_cell",
-                "default_state" : {
+                "default_delay": "transport",
+                "default_cell_type": "CO2_cell",
+                "default_state": {
                     "counter": -1,
-                    "concentration" : 500,
-                    "type" : -100
+                    "concentration": 500,
+                    "type": -100,
+                    "breathing_counter": 0
                 },
-            "default_config" : {
-                    "CO2_cell" : {
-                        "conc_increase" : 243.2,
-                        "base" : 500,
-                        "resp_time" : 5,
-                        "window_conc" : 400,
-                        "vent_conc" : 300
+                "default_config": {
+                    "CO2_cell": {
+                        "conc_increase": 243.2,
+                        "base": 500,
+                        "resp_time": 1,
+                        "window_conc": 400,
+                        "vent_conc": 300,
+                        "breathing_rate": 5,
+                        "time_active": 500,
+                        "start_time": 50
                     }
                 },
                 "neighborhood": [
