@@ -1,3 +1,9 @@
-# CO2 spread in a lab
+# 2D_pedestrian_behavior
 
-Difussion of CO2 in a computer lab
+The model includes the CO2_Source movement. Only works for 2D scenario.
+
+Movement route:
+- enter the room one by one
+- walk to the workstation/location they have been assigned 
+- stay at the location for a while
+- walk to the exit, then leave the room.
