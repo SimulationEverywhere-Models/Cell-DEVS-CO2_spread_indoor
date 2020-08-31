@@ -38,7 +38,7 @@
 using nlohmann::json;
 using namespace cadmium::celldevs;
 
-std::list<std::pair<char,std::pair<int,int>>> nextActionList;
+std::list<std::pair<char,std::pair<int,int>>> nextActionList; //List include the next action for CO2_Source movement <action(+:Appear CO2_Source;-:Remove CO2_Source),<xPosition,yPosition>>
 
 /************************************/
 /******COMPLEX STATE STRUCTURE*******/
