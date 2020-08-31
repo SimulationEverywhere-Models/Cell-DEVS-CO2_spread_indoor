@@ -1,3 +1,3 @@
-# CO2 spread in a lab
+# 2&3D_without_pedestrian_behavior
 
-Difussion of CO2 in a computer lab
+

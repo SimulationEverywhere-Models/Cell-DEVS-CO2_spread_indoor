@@ -1,7 +1,7 @@
 # Cadmium-Cell-DEVS-Models
 
 2&3D_without_pedestrian_behavior
-	1. No movement
+	1. No CO2_Source movement
 	2. new breath calculation
 	3. resp_time = 1
 	4. Compatible with both 2D and 3D
