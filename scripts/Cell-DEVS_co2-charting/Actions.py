@@ -28,6 +28,7 @@ class Actions:
             self.cellDict = cellDict
             self.graphicalElements = graphicalElements
 
+        # Code to be run in the thread
         def run (self):
             self.graphicalElements["fileButton"]["state"] = "disable"
             self.graphicalElements["graphButton"]["state"] = "disable"
@@ -54,6 +55,7 @@ class Actions:
             self.graphicalElements = graphicalElements
             self.cellDict = cellDict
 
+        # Code to be run in the thread
         def run (self):
             self.graphicalElements["fileButton"]["state"] = "disable"
             self.graphicalElements["graphButton"]["state"] = "disable"
@@ -68,7 +70,7 @@ class Actions:
             print("Storage populated")
 
     # Function: generateGraph
-    # Purpose: a wrapper class that generates a graph (displays in a web browser)
+    # Purpose: a wrapper function that generates a graph (displays in a web browser)
     # Arguments:
     #     filename: name of the file from which to obtain graphing data (transient mode only)
     #     coords: coordinates for which to generate a graph

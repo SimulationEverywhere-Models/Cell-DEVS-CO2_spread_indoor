@@ -28,12 +28,14 @@ class Control:
             print("ERROR: Could not load configuation file")
             sys.exit(1)
 
+        # Prepare command line arguments for later use
         debug = args.prog_msg
         imgMsg = args.img_msg
         critMsg = not args.no_crit_msg
 
         config = json.loads(config)  # Convert JSON string into dictionary
 
+        # Ensure the types of files given are valid
         convertType = Control.convertType(config["files"], args.dim, critMsg=critMsg)
         if (convertType is None and critMsg):
             print("ERROR: Invalid file extension")
@@ -67,7 +69,6 @@ class Control:
             return None
         return filename[loc + 1:].lower()
 
-    # Determine what type of conversion to perform
     # Function: convertType
     # Purpose: determine what type of conversion to preform (image-to-JSON, JSON-to-JSON, etc.)
     # Arguments:
