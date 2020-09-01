@@ -23,7 +23,7 @@ class Graph:
         return pd.DataFrame(data=points, columns=[Constants.Graph.labelX, Constants.Graph.labelY])
 
     # Function: getRange
-    # Purpose: get the minimum and maximum values for concentration to be used on a graph
+    # Purpose: get the minimum and maximum values for concentration to be shown on a graph
     # Arguments:
     #     dataPoints: list of DataPoints to be checked
     # Return:

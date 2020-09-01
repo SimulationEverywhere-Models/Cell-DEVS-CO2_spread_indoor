@@ -36,11 +36,12 @@ class ConvertTools:
                 },
                 "default_config": {
                     "CO2_cell": {
-                        "conc_increase": 243.2,
-                        "base": 500,
-                        "resp_time": 1,
+                        "co2_production": 0.026,
+                        "cell_size": 25,
+                        "base" : 500,
+                        "resp_time" : 1,
                         "window_conc": 400,
-                        "vent_conc": 300,
+                        "vent_conc": 500,
                         "breathing_rate": 5,
                         "time_active": 500,
                         "start_time": 50

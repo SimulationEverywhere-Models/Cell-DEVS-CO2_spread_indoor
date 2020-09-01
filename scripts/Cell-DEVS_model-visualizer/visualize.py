@@ -78,7 +78,7 @@ while (response != "q"):
                 result += symbols[int(cells[str(coord)])]
             else:
                 result += symbols[-100]
-            result += ""
+            result += ""  # for more accurate visualizations, set this like to add a space
         result += "\n"
 
     print(result)

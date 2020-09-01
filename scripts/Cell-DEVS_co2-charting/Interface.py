@@ -108,7 +108,7 @@ class Interface (tk.Frame):
         else:
             self.graphThread = Actions.GraphThread(graphicalElements=self.graphicalElements, cellDict=self.cellDict, coords=coords)
 
-        # Do not wait for this thread (it disables the graph generation button until completed)
+        # Do not wait for this thread (it disables the graph generation and file selection buttons until completed)
         # The thread is a daemon and will terminate when finished or when the main thread terminates
         self.graphThread.start()
 
@@ -142,7 +142,7 @@ class Interface (tk.Frame):
 
             self.loadThread = Actions.LoadThread(graphicalElements=self.graphicalElements, filename=self.filename, cellDict=self.cellDict)
 
-            # Do not wait for this thread (it disables the graph generation button until completed)
+            # Do not wait for this thread (it disables the graph generation and file selection buttons until completed)
             # The thread is a daemon and will terminate when finished or when the main thread terminates
             self.loadThread.start()
 
