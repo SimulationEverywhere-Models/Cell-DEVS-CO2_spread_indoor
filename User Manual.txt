@@ -1,0 +1,38 @@
+CO2 Spread Computer Lab model User Manual
+
+There are 4 versions of this model,
+1. The base 2D model, this is in 2D and has no movement of the co2 sources (least complex, fastest runtime)
+2. The base 3D model, this is in 3D and has no movement of the co2 sources (more complex, slower runtime)
+3. The 2D model with movement, (medium complex, fast runtime)
+4. The 3D model with movement, (most complex, slowest runtime)
+
+The model uses an input json to take in the floorplan of the scenario, it further uses a series of numbers
+defined in the code as type indicators for cells. These are:
+AIR = -100  | this is the default cell type used in most floorplans, so any cell not specifically altered in the json will be cast as an air cell
+CO2_SOURCE = -200
+IMPERMEABLE_STRUCTURE = -300 | this is used to depict walls
+DOOR = -400
+WINDOW = -500
+VENTILATION = -600
+WORKSTATION = -700 | This is used in the base model as a placeholder for the co2 sources and in the movement models as their destinations
+EXHAUST = -800 | unused at present; might be missing in some versions, not important
+
+TO MAKE CHANGES:
+All versions of the model support changes to the following elements in the input json without need for recompiling of the program
+1. The floorplan of the scenario can be modified by modifying the input jsons cells field, for example: if the user wished to remove a window, they could simply find the cell in the json at those coordinates and delete it
+2. Cell sizes can be adjusted by changing the cell_size field in the default_config of the json (line 16 approx.)
+3. CO2 concentration increase per breath can be changed to indicate more strenuous activity by changing the co2_production value in the default_config in the json (line 15 approx.)
+4. Start time for the state at which the workstations change into CO2 sources in the base models can be changed using the start_time (line 23 approx)
+5. Number of states spent at the workstation can be adjusted using the time_active value in the default state of the json (line 22 approx)
+
+TO RUN:
+1. Compile the code using this command g++ -g -I ../../cadmium/include -I ../../cadmium/json/include -std=c++17 -o CO2 co2_main.cpp co2_coupled.hpp co2_lab_cell.hpp
+	the relative paths of the 2 include flags may be different for your setup, please change accordingly
+	alternatively if there is a makefile, simply type make into the bash shell
+
+2. Once compiled all changes that are not in the hpp or cpp files do not require recompilation
+3. Create a folder in the same place as the executable, name it results
+4. Run the simulation using the command ./CO2 followed by the path to the json and an optional number of timesteps, e.g ./CO2 ../config/test.json 
+															or ./CO2 ../config/test.json 500
+
+5. The results folder will be populated with 2 files once the simulation starts running, output_messages.txt and output_state.txt
