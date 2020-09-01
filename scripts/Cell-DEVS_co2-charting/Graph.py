@@ -30,7 +30,10 @@ class Graph:
     #     minimum and maximum values for the graph's concentration axis
     @staticmethod
     def getRange (dataPoints):
-        return [min(dataPoints).getConcentration() - 10, max(dataPoints).getConcentration() + 10]
+        minimum = min(dataPoints).getConcentration()
+        maximum = max(dataPoints).getConcentration()
+        difference = maximum - minimum
+        return [minimum - (difference * 0.1), maximum + (difference * 0.1)]
 
     # Function: getTitle
     # Purpose: create a title for a graph
