@@ -15,8 +15,7 @@
         "base" : 500,
         "resp_time" : 1,
         "window_conc": 400,
-        "vent_conc" : 300,
-        "totalStudents" : 36
+        "vent_conc" : 300
       }
     },
     "neighborhood": [

@@ -217,7 +217,7 @@ public:
 				}
 				new_state.breathing_counter++;
                 new_state.counter += 1;
-                if (state.current_state.counter == time_active ) {
+                if (state.current_state.counter == time_active ) { //TODO parameterize //done
                     new_state.type = WORKSTATION; //The student left. The place is free.
                 }
                 break;
