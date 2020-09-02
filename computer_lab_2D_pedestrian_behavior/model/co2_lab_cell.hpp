@@ -40,7 +40,6 @@ using namespace cadmium::celldevs;
 float cell_size = 25;
 
 // Model Variables
-int totalStudents = 36; //Total CO2_Source in the model
 int studentGenerateCount = 5; //Student generate speed (n count/student)
 
 std::list<std::pair<int,int>> actionList; //List include the next action for CO2_Source movement <action(+:Appear CO2_Source;-:Remove CO2_Source),<xPosition,yPosition>>
@@ -92,10 +91,11 @@ struct conc {
     int window_conc; //CO2 level at window
     int vent_conc; //CO2 level at vent
     int resp_time;
+    int totalStudents; //Total CO2_Source in the model
     // Each cell is 25cm x 25cm x 25cm = 15.626 Liters of air each
     // CO2 sources have their concentration continually increased by default by 12.16 ppm every 5 seconds.
-    conc(): conc_increase(121.6*2), base(500), resp_time(5), window_conc(400), vent_conc(300) {}
-    conc(float ci, int b, int wc, int vc, int r, int ec): conc_increase(ci), base(b), resp_time(r), window_conc(wc), vent_conc(vc) {}
+    conc(): conc_increase(121.6*2), base(500), resp_time(5), window_conc(400), vent_conc(300), totalStudents(36) {}
+    conc(float ci, int b, int wc, int vc, int r, int ts): conc_increase(ci), base(b), resp_time(r), window_conc(wc), vent_conc(vc), totalStudents(ts) {}
 };
 void from_json(const json& j, conc &c) {
     j.at("conc_increase").get_to(c.conc_increase);
@@ -103,6 +103,7 @@ void from_json(const json& j, conc &c) {
     j.at("resp_time").get_to(c.resp_time);
     j.at("window_conc").get_to(c.window_conc);
     j.at("vent_conc").get_to(c.vent_conc);
+    j.at("vent_conc").get_to(c.totalStudents);
 }
 
 
@@ -121,6 +122,7 @@ public:
     int resp_time; //Time used to calculate the concentration inscrease
     int window_conc; //CO2 level at window
     int vent_conc; //CO2 level at cent
+    int totalStudents; //Total CO2_Source in the model
 
  
     co2_lab_cell() : grid_cell<T, co2, int>() {
@@ -136,6 +138,7 @@ public:
         resp_time = config.resp_time;
         window_conc = config.window_conc;
         vent_conc = config.vent_conc;
+        totalStudents = config.totalStudents;
 
         if(initial_state.type == WORKSTATION) {
             std::pair<int,std::pair<int,int>> workstationInfo;
