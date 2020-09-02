@@ -42,14 +42,14 @@ float cell_size = 25;
 // Model Variables
 int studentGenerateCount = 5; //Student generate speed (n count/student)
 
-std::list<std::pair<int,int>> actionList; //List include the next action for CO2_Source movement <action(+:Appear CO2_Source;-:Remove CO2_Source),<xPosition,yPosition>>
-std::list<std::pair<std::pair<int,char>,std::pair<int,int>>> studentsList; //List include all CO2_Source that generated <<StudentID,state(+:Join;-:Leaving)>,<xPosition,yPosition>>
+std::list<std::pair<int,int>> actionList; //List include the position for next CO2_Source movement action.
+std::list<std::pair<std::pair<int,char>,std::pair<int,int>>> studentsList; //List include all CO2_Source that generated <<StudentID,state(+:Joining;-:Leaving)>,<xPosition,yPosition>>
 
 std::list<std::pair<int,std::pair<int,int>>> workstationsList; //List include the information of exist workstations <workStationID,<xPosition,yPosition>>
 int workstationNumber = 0; //Total number of exist workstations
 
-int counter = 0; //counter for studentGenerateCount
 int studentGenerated = 0; //Record the number of students the already generated
+int counter = 0; //counter for studentGenerated
 
 /************************************/
 /******COMPLEX STATE STRUCTURE*******/
@@ -254,13 +254,14 @@ public:
                             std::pair<int, int> nextLocation = setNextRoute(currentLocation, i->first);
                             i->second = nextLocation;
 
-                            if(nextLocation == currentLocation){
+                            if(nextLocation == currentLocation){ //Stay at same location
                                 //DO NOTHING
                             }else if(nextLocation.first == -1 && nextLocation.second == -1){
+                                //Change the type
                                 new_state.type = AIR;
                                 actionList.remove(currentLocation);
                             }else {
-                                //Arrangement next action
+                                //Arrangement next action and change the type
                                 actionList.remove(currentLocation);
                                 actionList.push_back(nextLocation);
                                 new_state.type = AIR;
@@ -335,6 +336,8 @@ public:
 
     /*
      * Check if the destination workstation is nearby
+     *
+     * return true if Workstation nearby
      */
     [[nodiscard]] bool WSNearby(std::pair<int, int> destination) const {
         for(auto const neighbors: state.neighbors_state) {
@@ -351,6 +354,8 @@ public:
 
     /*
      * Check if the destination DOOR is nearby
+     *
+     * return true if DOOR is nearby
      */
     [[nodiscard]] bool doorNearby(std::pair<int, int> destination) const{
         for(auto const neighbors: state.neighbors_state) {
@@ -408,6 +413,8 @@ public:
 
     /*
      * Check if the next location is occupied
+     *
+     * return true if it's available to move
      */
     [[nodiscard]] bool moveCheck(int xNext,int yNext) const {
         bool moveCheck = false;
