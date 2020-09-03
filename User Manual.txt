@@ -26,13 +26,19 @@ All versions of the model support changes to the following elements in the input
 5. Number of states spent at the workstation can be adjusted using the time_active value in the default state of the json (line 22 approx)
 
 TO RUN:
-1. Compile the code using this command g++ -g -I ../../cadmium/include -I ../../cadmium/json/include -std=c++17 -o CO2 co2_main.cpp co2_coupled.hpp co2_lab_cell.hpp
-	the relative paths of the 2 include flags may be different for your setup, please change accordingly
-	alternatively if there is a makefile, simply type make into the bash shell
-
+1. Compile using cmake:
+			a) open the bash prompt in the Cell-DEVS-CO2_spread_computer_lab folder and execute this command, cmake ./
+			b) this will create a makefile in the folder, now execute make
+			c) this will create the executable co2_lab in the bin folder
 2. Once compiled all changes that are not in the hpp or cpp files do not require recompilation
-3. Create a folder in the same place as the executable, name it results
-4. Run the simulation using the command ./CO2 followed by the path to the json and an optional number of timesteps, e.g ./CO2 ../config/test.json 
-															or ./CO2 ../config/test.json 500
+3. Create a folder in the same directory as the executable, name it results
+4. Run the simulation by entering the bin folder, opening a bash prompt and using the command ./co2_lab followed by the path to the json and an optional number of timesteps, e.g ./co2_lab ../config/test.json 
+																						or ./co2_lab ../config/test.json 500
 
 5. The results folder will be populated with 2 files once the simulation starts running, output_messages.txt and output_state.txt
+
+ALTERNATE COMPILE INSTRUCTION:
+here is the manual command for the compilation
+g++ -g -I ../../cadmium/include -I ../../cadmium/json/include -std=c++17 -o CO2 co2_main.cpp co2_coupled.hpp co2_lab_cell.hpp
+
+please change the relative filepaths after the two -I (include flags) as required
