@@ -2,6 +2,7 @@
 # Thomas Roller
 
 import math
+import random
 
 class GeneralTools:
 
@@ -52,6 +53,33 @@ class GeneralTools:
 
     # Class for generating replicable psuedorandom numbers
     class RandomNumber:
+        # Function: __init__
+        # Purpose: initialize an instance of RandomNumber
+        # Arguments:
+        #     self: enclosing instance (automatic, not user specified)
+        #     seed: an integer to seed the random number generation
+        #     minimum: the minimum possible value that can be generated
+        #     maximum: the maximum possible value that can be generated
+        #     internalLimit: no purpose (kept for backward compatibility)
+        # Return:
+        #     none
+        def __init__ (self, seed, minimum, maximum, internalLimit=None):
+            self.minimum = minimum
+            self.maximum = maximum
+            self.randomGenerator = random.Random(seed)
+
+        # Function: getInt
+        # Purpose: get the next random number and progress generator
+        # Arguments:
+        #     self: enclosing instance (automatic, not user specified)
+        # Return:
+        #     pseudorandom integer
+        def getInt (self):
+            return self.randomGenerator.randint(self.minimum, self.maximum)
+
+    # No longer used (depricated)
+    # Class for generating replicable psuedorandom numbers
+    class RandomNumber_Depricated:
 
         # Function: __init__
         # Purpose: initialize an instance of RandomNumber
