@@ -25,6 +25,12 @@ All versions of the model support changes to the following elements in the input
 4. Start time for the state at which the workstations change into CO2 sources in the base models can be changed using the start_time (line 23 approx)
 5. Number of states spent at the workstation can be adjusted using the time_active value in the default state of the json (line 22 approx)
 
+HOW TO USE ON NEW VERSION OF CADMIUM:
+1. Make sure you have Cell-DEVS properly set up, the instructions can be found here (https://github.com/SimulationEverywhere/Cell-DEVS-Cadmium-Simulation-Environment), if you already have it you can run the command (git submodule update --init --recursive) in the Cell-DEVS-Cadmium-Simulation-Environment directory to update the dependencies
+3. If not already done, clone the CO2 spread model in the Cadmium-Cell-DEVS-Models folder with (git clone https://github.com/SimulationEverywhere-Models/Cell-DEVS-CO2_spread_indoor.git)
+4. In the (Cell-DEVS-Cadmium-Simulation-Environment/cadmium) directory run the command (git checkout celldevs-jason-performance-improvement)
+5. Follow the steps bellow to run the simulations on the models.
+
 TO RUN:
 1. Compile using cmake:
 			a) open the bash prompt in the Cell-DEVS-CO2_spread_computer_lab folder and execute this command, cmake ./
