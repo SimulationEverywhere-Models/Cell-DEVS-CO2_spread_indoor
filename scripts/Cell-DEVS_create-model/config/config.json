@@ -1,26 +1,26 @@
 {
     "files": {
-        "input" : "input/lab_scenario.json",
-        "output" : "output/lab_scenario3D.json"
+        "input" : "input/computer_lab_image.bmp",
+        "output" : "output/lab_allws_scenario3D.json"
     },
     "model" : {
-        "height" : 13,
-        "neighbourhood" : "von_neumann",
+        "height" : 8,
+        "neighbourhood" : "moore",
         "range" : 1,
         "walls_only" : false,
         "heights" : {
-            "door_top" : 8,
-            "vent" : 12,
-            "workstation" : 4,
+            "door_top" : 4,
+            "vent" : 7,
+            "workstation" : 3,
             "window" : {
-                "bottom" : 4,
-                "top" : 8
+                "bottom" : 2,
+                "top" : 5
             }
         },
         "counter" : {
             "seed" : 5,
-            "minimum" : -30,
-            "maximum" : 10
+            "minimum" : -9000,
+            "maximum" : -8000
         }
     },
     "image" : {
@@ -53,7 +53,7 @@
                 "counter" : -1
             },
             "0,0,255" : {
-                "concentration" : 300,
+                "concentration" : 400,
                 "type" : -600,
                 "counter" : -1
             },

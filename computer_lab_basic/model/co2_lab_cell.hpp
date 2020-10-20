@@ -42,7 +42,7 @@ using namespace std;
 /************************************/
 /******COMPLEX STATE STRUCTURE*******/
 /************************************/
-enum CELL_TYPE {AIR=-100, CO2_SOURCE=-200, IMPERMEABLE_STRUCTURE=-300, DOOR=-400, WINDOW=-500, VENTILATION=-600, WORKSTATION=-700};
+enum CELL_TYPE {AIR=-100, CO2_SOURCE=-200, IMPERMEABLE_STRUCTURE=-300, DOOR=-400, WINDOW=-500, 	VENTILATION=-600, WORKSTATION=-700};
 struct co2 {
     int counter;
     int concentration;
@@ -86,24 +86,24 @@ struct conc {
     int vent_conc; //CO2 level at vent
     int resp_time;
 	int breathing_rate;
-	int time_active; //amount of time in states spent at workstation
+	int time_active; //time_active-start_time is the time each occupant spends in the room.
 	int start_time; //start state for workstation occupation
 
-    // Each cell is 25cm x 25cm x 25cm = 15.626 Liters of air each
-      // CO2 sources have their concentration continually increased by default by 12.16 ppm every 5 seconds.
-    conc(): co2_production(0.0155), cell_size(25), base(500), resp_time(5), window_conc(400), vent_conc(400), breathing_rate(5), time_active(100), start_time(30) {}
+    // The default is that each cell is 25cm x 25cm x 25cm
+    // CO2 sources have their concentration continually increased by default by 12.16 ppm every 5 seconds.
+    conc(): co2_production(0.026), cell_size(25), base(500), resp_time(5), window_conc(400), vent_conc(400), breathing_rate(5), time_active(100), start_time(30) {}
     conc(float ci, float cs, int b, int wc, int vc, int r, int br, int ta, int st): co2_production(ci), cell_size(cs), base(b), resp_time(r), window_conc(wc), vent_conc(vc), breathing_rate(br), time_active(ta), start_time(st) {}
 };
 void from_json(const json& j, conc &c) {
-    j.at("co2_production").get_to(c.co2_production);
-    j.at("cell_size").get_to(c.cell_size);
-    j.at("base").get_to(c.base);
+    j.at("co2_production").get_to(c.co2_production);//production per singl human breath 
+    j.at("cell_size").get_to(c.cell_size);//It is assumed that the cell size is specified in cm
+    j.at("base").get_to(c.base);//base concentration in the building in ppm
     j.at("resp_time").get_to(c.resp_time);
-    j.at("window_conc").get_to(c.window_conc);
-    j.at("vent_conc").get_to(c.vent_conc);
-    j.at("breathing_rate").get_to(c.breathing_rate);
-	j.at("time_active").get_to(c.time_active);
-	j.at("start_time").get_to(c.start_time);
+    j.at("window_conc").get_to(c.window_conc);//in ppm
+    j.at("vent_conc").get_to(c.vent_conc);//in ppm
+    j.at("breathing_rate").get_to(c.breathing_rate);//in seconds
+	j.at("time_active").get_to(c.time_active);//the time the occupants spend in the room (time steps that are equivelant to seconds)
+	j.at("start_time").get_to(c.start_time);//when the counter Iincremented every clock tick)reaches this value, the worstation is switched to a CO2 source
 }
 
 
@@ -120,7 +120,7 @@ public:
     int base; //CO2 base level 
     int resp_time; //Time used to calculate the concentration inscrease /// set in JSON
     int window_conc; //CO2 level at window
-    int vent_conc; //CO2 level at cent
+    int vent_conc; //CO2 level at vent
 	int breathing_rate; ///the interval between two consecutive breaths in seconds.//set intially from the JSON
 	int time_active; ///time spent by the person at the workstation ///set in JSON
 	int start_time; ///start time for workstation occupation ///set in JSON
@@ -132,7 +132,12 @@ public:
     co2_lab_cell(cell_position const &cell_id, cell_unordered<int> const &neighborhood, co2 initial_state,
         cell_map<co2, int> const &map_in, std::string const &delayer_id, conc config) :
             grid_cell<T, co2>(cell_id, neighborhood, initial_state, map_in, delayer_id) {
-                concentration_increase = 1000 * 10000*config.co2_production/pow(config.cell_size,3);
+				/*The first three multiplied numbers are for unit conversion
+				multiplying by 100 to convert from fraction to percentage.
+				multiplying by 1000 to convert from liters to cubic meters
+				multiplying by 10000 to convert from precentage to ppm (particle per minute)
+				*/
+                concentration_increase = 100 * 1000 * 10000*config.co2_production/pow(config.cell_size,3);
                 base = config.base;
                 resp_time = config.resp_time;
                 window_conc = config.window_conc;
@@ -159,38 +164,41 @@ public:
                 break;
             case AIR:{
                 int concentration = 0;
-                int num_neighbors = 0;                
-                for(auto neighbors: state.neighbors_state) {
-                    if( neighbors.second.concentration < 0){
-                        assert(false && "co2 concentration cannot be negative");
-                    }
-                    if(neighbors.second.type != IMPERMEABLE_STRUCTURE){
-                        concentration += neighbors.second.concentration;
-                        num_neighbors +=1;
-                    }
-                }
-                new_state.concentration = concentration/num_neighbors;
-                break;             
+                int num_neighbors = 0;  
+				//calculating diffusion
+				//Iterationg on the neighboring cells to
+				for(auto neighbors: state.neighbors_state) {
+					if( neighbors.second.concentration < 0){
+						assert(false && "co2 concentration cannot be negative");
+					}
+					if(neighbors.second.type != IMPERMEABLE_STRUCTURE){
+						concentration += neighbors.second.concentration;
+						num_neighbors +=1;
+					}
+				}
+				new_state.concentration = concentration/num_neighbors;
+				break;             
             }
             case WORKSTATION:{
                 int concentration = 0;
                 int num_neighbors = 0;                
-                for(auto neighbors: state.neighbors_state) {
-                    if( neighbors.second.concentration < 0){
-                        assert(false && "co2 concentration cannot be negative");
-                    }
-                    if(neighbors.second.type != IMPERMEABLE_STRUCTURE){
-                        concentration += neighbors.second.concentration;
-                        num_neighbors +=1;
-                    }
-                }
-                new_state.concentration = concentration/num_neighbors;
-                
-                    
-                if (state.current_state.counter <= start_time) { //TODO parameterize //done
+				//calculating diffusion
+				//Iterationg on the neighboring cells to caclulate the average CO2 level
+				for(auto neighbors: state.neighbors_state) {
+					if( neighbors.second.concentration < 0){
+						assert(false && "co2 concentration cannot be negative");
+					}
+					if(neighbors.second.type != IMPERMEABLE_STRUCTURE){
+						concentration += neighbors.second.concentration;
+						num_neighbors +=1;
+					}
+				}
+				new_state.concentration = concentration/num_neighbors;
+                //The purpose of the counter is to have different start times for each cell. Initially, each occupant has a different counter and it determines when this occupant will be active as a CO2 source in the workstation
+				if (state.current_state.counter <= start_time) { 
                     new_state.counter += 1;                   
                 }
-
+				//The workstation switches to occupied when the counter of each occupant exceeds the start time
                 if (state.current_state.counter == start_time){
                     new_state.type = CO2_SOURCE; 
 					new_state.breathing_counter = 0;
@@ -200,24 +208,26 @@ public:
             case CO2_SOURCE:{
                 int concentration = 0;
                 int num_neighbors = 0;
-                for(auto neighbors: state.neighbors_state) {
-                  if( neighbors.second.concentration < 0){
-                        assert(false && "co2 concentration cannot be negative");
-                    }
-                      if(neighbors.second.type != IMPERMEABLE_STRUCTURE){
-                        concentration += neighbors.second.concentration;
-                        num_neighbors +=1;
-                    }               
-                }
-                
-                new_state.concentration = (concentration/num_neighbors);
-				//The concentration increases every time an occupant breathes (the default breathing rate is every five seconds)
-				if( (new_state.breathing_counter % breathing_rate) == 0){
-					new_state.concentration += (concentration_increase);
+				//calculating diffusion
+				//Iterationg on the neighboring cells to caclulate the average CO2 level
+				for(auto neighbors: state.neighbors_state) {
+				  if( neighbors.second.concentration < 0){
+						assert(false && "co2 concentration cannot be negative");
+					}
+					  if(neighbors.second.type != IMPERMEABLE_STRUCTURE){
+						concentration += neighbors.second.concentration;
+						num_neighbors +=1;
+					}               
 				}
+				new_state.concentration = (concentration/num_neighbors);
+				//The concentration increases every time an occupant breathes (the default breathing rate is every five seconds)
+				if( (new_state.breathing_counter % breathing_rate ) == 0)
+					new_state.concentration += concentration_increase;
+				//The breathing counter is there to know how many clock ticks have passed since the last breath. The purpose for this is to add CO2 (concentration_increase) that represents the CO2 production from each breath only when the time interval of breathing_rate passes. Example: if the breathing rate is every 5 econds, the concentration increase will be added at 0,5,10,15, etc.
 				new_state.breathing_counter++;
+				//The occupant switches to workstation when the counter of each occupant exceeds the time active. time_active-start_time is the time each occupant spends in the room.
                 new_state.counter += 1;
-                if (state.current_state.counter == time_active ) { //TODO parameterize //done
+                if (state.current_state.counter == time_active ) {
                     new_state.type = WORKSTATION; //The student left. The place is free.
                 }
                 break;
@@ -231,10 +241,9 @@ public:
 
     }
 
-    
     // It returns the delay to communicate cell's new state.
     T output_delay(co2 const &cell_state) const override {
-			return resp_time;
+		return resp_time;
     }
 
 };

@@ -13,6 +13,6 @@ class Constants:
     #     none
     class Graph:
 
-        labelX = "time (steps)"
-        labelY = "concentration (ppm)"
+        labelX = "Time (steps)"
+        labelY = "CO2 concentration (ppm)"
         title = None  # set to None for Graph.getTitle to create a title

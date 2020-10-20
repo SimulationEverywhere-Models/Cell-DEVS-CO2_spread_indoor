@@ -77,7 +77,7 @@ int main(int argc, char ** argv) {
     std::shared_ptr<cadmium::dynamic::modeling::coupled<TIME>> t = std::make_shared<co2_coupled<TIME>>(test);
 
     cadmium::dynamic::engine::runner<TIME, logger_top> r(t, {0});
-    float sim_time = (argc > 2)? atof(argv[2]) : 7200;
+    float sim_time = (argc > 2)? atof(argv[2]) : 7200; // 1800 We are modeling two and a half hours where each clock tick represents five seconds (2.5*60*60/5)
     r.run_until(sim_time);
     return 0;
 }
