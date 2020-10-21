@@ -199,7 +199,8 @@ public:
 						assert(false && "co2 concentration cannot be negative");
 					}
 					if(neighbors.second.type != IMPERMEABLE_STRUCTURE){
-						if (airflow_dir ==  map.relative(neighbors.first)) {
+						vector<int> neighbor_relative_pos = map.relative(neighbors.first);
+						if (airflow_dir[0] ==  neighbor_relative_pos[0] && airflow_dir[1] ==  neighbor_relative_pos[1]) {
 							flow_concentration = neighbors.second.concentration*flow_weight;				
 						}
 						else{
