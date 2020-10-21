@@ -34,6 +34,7 @@
 #include <cmath>
 #include <nlohmann/json.hpp>
 #include <cadmium/celldevs/cell/grid_cell.hpp>
+#include "NDTime.hpp"
 
 using nlohmann::json;
 using namespace cadmium::celldevs;
@@ -84,21 +85,23 @@ struct conc {
     int base; //CO2 base level
     int window_conc; //CO2 level at window
     int vent_conc; //CO2 level at vent
-    int resp_time;
+    NDTime resp_time;
 	int breathing_rate;
 	int time_active; //time_active-start_time is the time each occupant spends in the room.
 	int start_time; //start state for workstation occupation
 
     // The default is that each cell is 25cm x 25cm x 25cm
     // CO2 sources have their concentration continually increased by default by 12.16 ppm every 5 seconds.
-    conc(): co2_production(0.026), cell_size(25), base(500), resp_time(5), window_conc(400), vent_conc(400), breathing_rate(5), time_active(100), start_time(30) {}
-    conc(float ci, float cs, int b, int wc, int vc, int r, int br, int ta, int st): co2_production(ci), cell_size(cs), base(b), resp_time(r), window_conc(wc), vent_conc(vc), breathing_rate(br), time_active(ta), start_time(st) {}
+    conc(): co2_production(0.026), cell_size(25), base(500), resp_time("5"), window_conc(400), vent_conc(400), breathing_rate(5), time_active(100), start_time(30) {}
+    conc(float ci, float cs, int b, int wc, int vc, NDTime r, int br, int ta, int st): co2_production(ci), cell_size(cs), base(b), resp_time(r), window_conc(wc), vent_conc(vc), breathing_rate(br), time_active(ta), start_time(st) {}
 };
 void from_json(const json& j, conc &c) {
     j.at("co2_production").get_to(c.co2_production);//production per singl human breath 
     j.at("cell_size").get_to(c.cell_size);//It is assumed that the cell size is specified in cm
     j.at("base").get_to(c.base);//base concentration in the building in ppm
-    j.at("resp_time").get_to(c.resp_time);
+	std::string r_time;
+    j.at("resp_time").get_to(r_time);
+	c.resp_time = r_time;
     j.at("window_conc").get_to(c.window_conc);//in ppm
     j.at("vent_conc").get_to(c.vent_conc);//in ppm
     j.at("breathing_rate").get_to(c.breathing_rate);//in seconds
@@ -118,7 +121,7 @@ public:
     using config_type = conc;  // IMPORTANT FOR THE JSON   
     float concentration_increase; //// CO2 sources have their concentration continually increased
     int base; //CO2 base level 
-    int resp_time; //Time used to calculate the concentration inscrease /// set in JSON
+    NDTime resp_time; //Time used to calculate the concentration inscrease /// set in JSON
     int window_conc; //CO2 level at window
     int vent_conc; //CO2 level at vent
 	int breathing_rate; ///the interval between two consecutive breaths in seconds.//set intially from the JSON

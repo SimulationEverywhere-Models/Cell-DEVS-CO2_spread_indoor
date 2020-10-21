@@ -33,12 +33,13 @@
 #include <cadmium/engine/pdevs_dynamic_runner.hpp>
 #include <cadmium/logger/common_loggers.hpp>
 #include "co2_coupled.hpp"
+#include "NDTime.hpp"
 
 using namespace std;
 using namespace cadmium;
 using namespace cadmium::celldevs;
 
-using TIME = float;
+using TIME = NDTime;
 
 /*************** Loggers *******************/
 static ofstream out_messages("results/output_messages.txt");
@@ -77,7 +78,8 @@ int main(int argc, char ** argv) {
     std::shared_ptr<cadmium::dynamic::modeling::coupled<TIME>> t = std::make_shared<co2_coupled<TIME>>(test);
 
     cadmium::dynamic::engine::runner<TIME, logger_top> r(t, {0});
-    float sim_time = (argc > 2)? atof(argv[2]) : 7200; // 1800 We are modeling two and a half hours where each clock tick represents five seconds (2.5*60*60/5)
+	std::string s_time = (argc > 2)? argv[2] : "02:00:00:000";
+    NDTime sim_time(s_time);
     r.run_until(sim_time);
     return 0;
 }

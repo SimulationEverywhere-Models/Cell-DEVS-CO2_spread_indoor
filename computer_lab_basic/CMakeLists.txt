@@ -14,7 +14,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../cadmium/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../cadmium/json/include)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../DESTimes/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../DESTimes/include
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}))
 
 find_package(Boost COMPONENTS program_options unit_test_framework REQUIRED)
 include_directories (${Boost_INCLUDE_DIRS})

@@ -1,0 +1,216 @@
+computer_lab_basic$ make
+Scanning dependencies of target co2_lab
+[ 50%] Building CXX object CMakeFiles/co2_lab.dir/model/co2_main.cpp.o
+In file included from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/celldevs/delay_buffer/delay_buffer_factory.hpp:35,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/celldevs/cell/cell.hpp:40,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/celldevs/coupled/cells_coupled.hpp:41,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/celldevs/coupled/grid_coupled.hpp:39,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/model/co2_coupled.hpp:35,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/model/co2_main.cpp:35:
+/mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/celldevs/delay_buffer/transport.hpp: In instantiation of ‘cadmium::celldevs::transport_delay_buffer<T, S>::transport_delay_buffer() [with T = NDTime; S = co2]’:
+/mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/celldevs/delay_buffer/delay_buffer_factory.hpp:49:24:   required from ‘static cadmium::celldevs::delay_buffer<T, S>* cadmium::celldevs::delay_buffer_factory<T, S>::create_delay_buffer(const string&, Args&& ...) [with Args = {}; T = NDTime; S = co2; std::string = std::__cxx11::basic_string<char>]’
+/mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/celldevs/cell/cell.hpp:102:69:   required from ‘cadmium::celldevs::cell<T, C, S, V, C_HASH>::cell(const C&, cadmium::celldevs::cell<T, C, S, V, C_HASH>::cell_unordered<V>&, S, const string&, Args&& ...) [with Args = {}; T = NDTime; C = std::vector<int>; S = co2; V = int; C_HASH = seq_hash<std::vector<int> >; cadmium::celldevs::cell<T, C, S, V, C_HASH>::cell_unordered<V> = std::unordered_map<std::vector<int>, int, seq_hash<std::vector<int> >, std::equal_to<std::vector<int> >, std::allocator<std::pair<const std::vector<int>, int> > >; std::string = std::__cxx11::basic_string<char>]’
+/mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/celldevs/cell/grid_cell.hpp:67:23:   required from ‘cadmium::celldevs::grid_cell<T, S, V>::grid_cell(const cell_position&, cadmium::celldevs::cell_unordered<V>&, S, const cadmium::celldevs::cell_map<S, V>&, const string&, Args&& ...) [with Args = {}; T = NDTime; S = co2; V = int; cadmium::celldevs::cell_position = std::vector<int>; cadmium::celldevs::cell_unordered<V> = std::unordered_map<std::vector<int>, int, seq_hash<std::vector<int> >, std::equal_to<std::vector<int> >, std::allocator<std::pair<const std::vector<int>, int> > >; std::string = std::__cxx11::basic_string<char>]’
+/mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/model/co2_lab_cell.hpp:137:87:   required from ‘co2_lab_cell<T>::co2_lab_cell(const cell_position&, cadmium::celldevs::cell_unordered<int>&, co2, const cadmium::celldevs::cell_map<co2, int>&, const string&, conc) [with T = NDTime; cadmium::celldevs::cell_position = std::vector<int>; cadmium::celldevs::cell_unordered<int> = std::unordered_map<std::vector<int>, int, seq_hash<std::vector<int> >, std::equal_to<std::vector<int> >, std::allocator<std::pair<const std::vector<int>, int> > >; std::string = std::__cxx11::basic_string<char>]’
+/mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_atomic.hpp:80:111:   required from ‘cadmium::dynamic::modeling::atomic<ATOMIC, TIME, Args>::atomic(const string&, Args&& ...) [with ATOMIC = co2_lab_cell; TIME = NDTime; Args = {const std::vector<int, std::allocator<int> >&, const std::unordered_map<std::vector<int, std::allocator<int> >, int, seq_hash<std::vector<int, std::allocator<int> > >, std::equal_to<std::vector<int, std::allocator<int> > >, std::allocator<std::pair<const std::vector<int, std::allocator<int> >, int> > >&, co2&, cadmium::celldevs::cell_map<co2, int>&, const std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, conc&}; std::string = std::__cxx11::basic_string<char>]’
+/usr/include/c++/9/ext/new_allocator.h:147:4:   [ skipping 7 instantiation contexts, use -ftemplate-backtrace-limit=0 to disable ]
+/usr/include/c++/9/bits/shared_ptr.h:717:39:   required from ‘std::shared_ptr<_Tp> std::make_shared(_Args&& ...) [with _Tp = cadmium::dynamic::modeling::atomic<co2_lab_cell, NDTime, const std::vector<int, std::allocator<int> >&, const std::unordered_map<std::vector<int, std::allocator<int> >, int, seq_hash<std::vector<int, std::allocator<int> > >, std::equal_to<std::vector<int, std::allocator<int> > >, std::allocator<std::pair<const std::vector<int, std::allocator<int> >, int> > >&, co2&, cadmium::celldevs::cell_map<co2, int>&, const std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, conc&>; _Args = {const std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, const std::vector<int, std::allocator<int> >&, const std::unordered_map<std::vector<int, std::allocator<int> >, int, seq_hash<std::vector<int, std::allocator<int> > >, std::equal_to<std::vector<int, std::allocator<int> > >, std::allocator<std::pair<const std::vector<int, std::allocator<int> >, int> > >&, co2&, cadmium::celldevs::cell_map<co2, int>&, const std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, conc&}]’
+/mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_model_translator.hpp:263:170:   required from ‘std::shared_ptr<cadmium::dynamic::modeling::atomic_abstract<TIME> > cadmium::dynamic::translate::make_dynamic_atomic_model(const string&, Args&& ...) [with ATOMIC = co2_lab_cell; TIME = NDTime; Args = {const std::vector<int, std::allocator<int> >&, const std::unordered_map<std::vector<int, std::allocator<int> >, int, seq_hash<std::vector<int, std::allocator<int> > >, std::equal_to<std::vector<int, std::allocator<int> > >, std::allocator<std::pair<const std::vector<int, std::allocator<int> >, int> > >&, co2&, cadmium::celldevs::cell_map<co2, int>&, const std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, conc&}; std::string = std::__cxx11::basic_string<char>]’
+/mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/celldevs/coupled/cells_coupled.hpp:109:100:   required from ‘void cadmium::celldevs::cells_coupled<T, C, S, V, C_HASH>::add_cell(const C&, cadmium::celldevs::cells_coupled<T, C, S, V, C_HASH>::cell_unordered<V>&, Args&& ...) [with CELL_MODEL = co2_lab_cell; Args = {co2&, cadmium::celldevs::cell_map<co2, int>&, const std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, conc&}; T = NDTime; C = std::vector<int>; S = co2; V = int; C_HASH = seq_hash<std::vector<int> >; cadmium::celldevs::cells_coupled<T, C, S, V, C_HASH>::cell_unordered<V> = std::unordered_map<std::vector<int>, int, seq_hash<std::vector<int> >, std::equal_to<std::vector<int> >, std::allocator<std::pair<const std::vector<int>, int> > >]’
+/mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/celldevs/coupled/grid_coupled.hpp:88:13:   required from ‘void cadmium::celldevs::grid_coupled<T, S, V>::add_cell(cadmium::celldevs::cell_map<S, V>&, const string&, Args&& ...) [with CELL_MODEL = co2_lab_cell; Args = {conc&}; T = NDTime; S = co2; V = int; std::string = std::__cxx11::basic_string<char>]’
+/mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/model/co2_coupled.hpp:51:13:   required from ‘void co2_coupled<T>::add_grid_cell_json(const string&, cadmium::celldevs::cell_map<co2, int>&, const string&, const json&) [with T = NDTime; std::string = std::__cxx11::basic_string<char>; nlohmann::json = nlohmann::basic_json<>]’
+/mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/model/co2_coupled.hpp:47:10:   required from here
+/mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/celldevs/delay_buffer/transport.hpp:52:100: error: use of deleted function ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map() [with _Key = NDTime; _Tp = co2; _Hash = std::hash<NDTime>; _Pred = std::equal_to<NDTime>; _Alloc = std::allocator<std::pair<const NDTime, co2> >]’
+   52 |         transport_delay_buffer() : delay_buffer<T, S>(), last_state(), timeline(), delayed_outputs() {}
+      |                                                                                                    ^
+In file included from /usr/include/c++/9/unordered_map:47,
+                 from /usr/include/c++/9/functional:61,
+                 from /usr/include/c++/9/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/9/algorithm:71,
+                 from /usr/include/boost/any.hpp:17,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_message_bag.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_model.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_coupled.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/model/co2_main.cpp:32:
+/usr/include/c++/9/bits/unordered_map.h:141:7: note: ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map() [with _Key = NDTime; _Tp = co2; _Hash = std::hash<NDTime>; _Pred = std::equal_to<NDTime>; _Alloc = std::allocator<std::pair<const NDTime, co2> >]’ is implicitly deleted because the default definition would be ill-formed:
+  141 |       unordered_map() = default;
+      |       ^~~~~~~~~~~~~
+/usr/include/c++/9/bits/unordered_map.h:141:7: error: use of deleted function ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable() [with _Key = NDTime; _Value = std::pair<const NDTime, co2>; _Alloc = std::allocator<std::pair<const NDTime, co2> >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<NDTime>; _H1 = std::hash<NDTime>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>]’
+In file included from /usr/include/c++/9/unordered_map:46,
+                 from /usr/include/c++/9/functional:61,
+                 from /usr/include/c++/9/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/9/algorithm:71,
+                 from /usr/include/boost/any.hpp:17,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_message_bag.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_model.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_coupled.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/model/co2_main.cpp:32:
+/usr/include/c++/9/bits/hashtable.h:414:7: note: ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable() [with _Key = NDTime; _Value = std::pair<const NDTime, co2>; _Alloc = std::allocator<std::pair<const NDTime, co2> >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<NDTime>; _H1 = std::hash<NDTime>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>]’ is implicitly deleted because the default definition would be ill-formed:
+  414 |       _Hashtable() = default;
+      |       ^~~~~~~~~~
+/usr/include/c++/9/bits/hashtable.h:414:7: error: use of deleted function ‘std::__detail::_Hashtable_base<_Key, _Value, _ExtractKey, _Equal, _H1, _H2, _Hash, _Traits>::_Hashtable_base() [with _Key = NDTime; _Value = std::pair<const NDTime, co2>; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<NDTime>; _H1 = std::hash<NDTime>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _Traits = std::__detail::_Hashtable_traits<true, false, true>]’
+In file included from /usr/include/c++/9/bits/hashtable.h:35,
+                 from /usr/include/c++/9/unordered_map:46,
+                 from /usr/include/c++/9/functional:61,
+                 from /usr/include/c++/9/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/9/algorithm:71,
+                 from /usr/include/boost/any.hpp:17,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_message_bag.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_model.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_coupled.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/model/co2_main.cpp:32:
+/usr/include/c++/9/bits/hashtable_policy.h:1822:5: note: ‘std::__detail::_Hashtable_base<_Key, _Value, _ExtractKey, _Equal, _H1, _H2, _Hash, _Traits>::_Hashtable_base() [with _Key = NDTime; _Value = std::pair<const NDTime, co2>; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<NDTime>; _H1 = std::hash<NDTime>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _Traits = std::__detail::_Hashtable_traits<true, false, true>]’ is implicitly deleted because the default definition would be ill-formed:
+ 1822 |     _Hashtable_base() = default;
+      |     ^~~~~~~~~~~~~~~
+/usr/include/c++/9/bits/hashtable_policy.h:1822:5: error: use of deleted function ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_Hash_code_base() [with _Key = NDTime; _Value = std::pair<const NDTime, co2>; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<NDTime>; _H2 = std::__detail::_Mod_range_hashing]’
+/usr/include/c++/9/bits/hashtable_policy.h:1373:7: note: ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_Hash_code_base() [with _Key = NDTime; _Value = std::pair<const NDTime, co2>; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<NDTime>; _H2 = std::__detail::_Mod_range_hashing]’ is implicitly deleted because the default definition would be ill-formed:
+ 1373 |       _Hash_code_base() = default;
+      |       ^~~~~~~~~~~~~~~
+/usr/include/c++/9/bits/hashtable_policy.h:1373:7: error: use of deleted function ‘std::__detail::_Hashtable_ebo_helper<_Nm, _Tp, true>::_Hashtable_ebo_helper() [with int _Nm = 1; _Tp = std::hash<NDTime>]’
+/usr/include/c++/9/bits/hashtable_policy.h:1096:7: note: ‘std::__detail::_Hashtable_ebo_helper<_Nm, _Tp, true>::_Hashtable_ebo_helper() [with int _Nm = 1; _Tp = std::hash<NDTime>]’ is implicitly deleted because the default definition would be ill-formed:
+ 1096 |       _Hashtable_ebo_helper() = default;
+      |       ^~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/9/bits/hashtable_policy.h:1096:7: error: use of deleted function ‘std::hash<NDTime>::hash()’
+In file included from /usr/include/c++/9/string_view:43,
+                 from /usr/include/c++/9/bits/basic_string.h:48,
+                 from /usr/include/c++/9/string:55,
+                 from /usr/include/c++/9/bits/locale_classes.h:40,
+                 from /usr/include/c++/9/bits/ios_base.h:41,
+                 from /usr/include/c++/9/ios:42,
+                 from /usr/include/c++/9/istream:38,
+                 from /usr/include/c++/9/fstream:38,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/model/co2_main.cpp:31:
+/usr/include/c++/9/bits/functional_hash.h:101:12: note: ‘std::hash<NDTime>::hash()’ is implicitly deleted because the default definition would be ill-formed:
+  101 |     struct hash : __hash_enum<_Tp>
+      |            ^~~~
+/usr/include/c++/9/bits/functional_hash.h:101:12: error: no matching function for call to ‘std::__hash_enum<NDTime, false>::__hash_enum()’
+/usr/include/c++/9/bits/functional_hash.h:82:7: note: candidate: ‘std::__hash_enum<_Tp, <anonymous> >::__hash_enum(std::__hash_enum<_Tp, <anonymous> >&&) [with _Tp = NDTime; bool <anonymous> = false]’
+   82 |       __hash_enum(__hash_enum&&);
+      |       ^~~~~~~~~~~
+/usr/include/c++/9/bits/functional_hash.h:82:7: note:   candidate expects 1 argument, 0 provided
+/usr/include/c++/9/bits/functional_hash.h:101:12: error: ‘std::__hash_enum<_Tp, <anonymous> >::~__hash_enum() [with _Tp = NDTime; bool <anonymous> = false]’ is private within this context
+  101 |     struct hash : __hash_enum<_Tp>
+      |            ^~~~
+/usr/include/c++/9/bits/functional_hash.h:83:7: note: declared private here
+   83 |       ~__hash_enum();
+      |       ^
+In file included from /usr/include/c++/9/bits/hashtable.h:35,
+                 from /usr/include/c++/9/unordered_map:46,
+                 from /usr/include/c++/9/functional:61,
+                 from /usr/include/c++/9/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/9/algorithm:71,
+                 from /usr/include/boost/any.hpp:17,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_message_bag.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_model.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_coupled.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/model/co2_main.cpp:32:
+/usr/include/c++/9/bits/hashtable_policy.h:1096:7: error: use of deleted function ‘std::hash<NDTime>::~hash()’
+ 1096 |       _Hashtable_ebo_helper() = default;
+      |       ^~~~~~~~~~~~~~~~~~~~~
+In file included from /usr/include/c++/9/string_view:43,
+                 from /usr/include/c++/9/bits/basic_string.h:48,
+                 from /usr/include/c++/9/string:55,
+                 from /usr/include/c++/9/bits/locale_classes.h:40,
+                 from /usr/include/c++/9/bits/ios_base.h:41,
+                 from /usr/include/c++/9/ios:42,
+                 from /usr/include/c++/9/istream:38,
+                 from /usr/include/c++/9/fstream:38,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/model/co2_main.cpp:31:
+/usr/include/c++/9/bits/functional_hash.h:101:12: note: ‘std::hash<NDTime>::~hash()’ is implicitly deleted because the default definition would be ill-formed:
+  101 |     struct hash : __hash_enum<_Tp>
+      |            ^~~~
+/usr/include/c++/9/bits/functional_hash.h:101:12: error: ‘std::__hash_enum<_Tp, <anonymous> >::~__hash_enum() [with _Tp = NDTime; bool <anonymous> = false]’ is private within this context
+/usr/include/c++/9/bits/functional_hash.h:83:7: note: declared private here
+   83 |       ~__hash_enum();
+      |       ^
+In file included from /usr/include/c++/9/bits/hashtable.h:35,
+                 from /usr/include/c++/9/unordered_map:46,
+                 from /usr/include/c++/9/functional:61,
+                 from /usr/include/c++/9/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/9/algorithm:71,
+                 from /usr/include/boost/any.hpp:17,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_message_bag.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_model.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_coupled.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/model/co2_main.cpp:32:
+/usr/include/c++/9/bits/hashtable_policy.h:1373:7: error: use of deleted function ‘std::__detail::_Hashtable_ebo_helper<1, std::hash<NDTime>, true>::~_Hashtable_ebo_helper()’
+ 1373 |       _Hash_code_base() = default;
+      |       ^~~~~~~~~~~~~~~
+/usr/include/c++/9/bits/hashtable_policy.h:1093:12: note: ‘std::__detail::_Hashtable_ebo_helper<1, std::hash<NDTime>, true>::~_Hashtable_ebo_helper()’ is implicitly deleted because the default definition would be ill-formed:
+ 1093 |     struct _Hashtable_ebo_helper<_Nm, _Tp, true>
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/9/bits/hashtable_policy.h:1093:12: error: use of deleted function ‘std::hash<NDTime>::~hash()’
+/usr/include/c++/9/bits/hashtable_policy.h:1822:5: error: use of deleted function ‘std::__detail::_Hash_code_base<NDTime, std::pair<const NDTime, co2>, std::__detail::_Select1st, std::hash<NDTime>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, true>::~_Hash_code_base()’
+ 1822 |     _Hashtable_base() = default;
+      |     ^~~~~~~~~~~~~~~
+/usr/include/c++/9/bits/hashtable_policy.h:1346:12: note: ‘std::__detail::_Hash_code_base<NDTime, std::pair<const NDTime, co2>, std::__detail::_Select1st, std::hash<NDTime>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, true>::~_Hash_code_base()’ is implicitly deleted because the default definition would be ill-formed:
+ 1346 |     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1347 |       _Default_ranged_hash, true>
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/9/bits/hashtable_policy.h:1346:12: error: use of deleted function ‘std::__detail::_Hashtable_ebo_helper<1, std::hash<NDTime>, true>::~_Hashtable_ebo_helper()’
+In file included from /usr/include/c++/9/unordered_map:46,
+                 from /usr/include/c++/9/functional:61,
+                 from /usr/include/c++/9/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/9/algorithm:71,
+                 from /usr/include/boost/any.hpp:17,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_message_bag.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_model.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_coupled.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/model/co2_main.cpp:32:
+/usr/include/c++/9/bits/hashtable.h:414:7: error: use of deleted function ‘std::__detail::_Hashtable_base<NDTime, std::pair<const NDTime, co2>, std::__detail::_Select1st, std::equal_to<NDTime>, std::hash<NDTime>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Hashtable_traits<true, false, true> >::~_Hashtable_base()’
+  414 |       _Hashtable() = default;
+      |       ^~~~~~~~~~
+In file included from /usr/include/c++/9/bits/hashtable.h:35,
+                 from /usr/include/c++/9/unordered_map:46,
+                 from /usr/include/c++/9/functional:61,
+                 from /usr/include/c++/9/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/9/algorithm:71,
+                 from /usr/include/boost/any.hpp:17,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_message_bag.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_model.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_coupled.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/model/co2_main.cpp:32:
+/usr/include/c++/9/bits/hashtable_policy.h:1770:10: note: ‘std::__detail::_Hashtable_base<NDTime, std::pair<const NDTime, co2>, std::__detail::_Select1st, std::equal_to<NDTime>, std::hash<NDTime>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Hashtable_traits<true, false, true> >::~_Hashtable_base()’ is implicitly deleted because the default definition would be ill-formed:
+ 1770 |   struct _Hashtable_base
+      |          ^~~~~~~~~~~~~~~
+/usr/include/c++/9/bits/hashtable_policy.h:1770:10: error: use of deleted function ‘std::__detail::_Hash_code_base<NDTime, std::pair<const NDTime, co2>, std::__detail::_Select1st, std::hash<NDTime>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, true>::~_Hash_code_base()’
+In file included from /usr/include/c++/9/unordered_map:46,
+                 from /usr/include/c++/9/functional:61,
+                 from /usr/include/c++/9/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/9/algorithm:71,
+                 from /usr/include/boost/any.hpp:17,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_message_bag.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_model.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_coupled.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/model/co2_main.cpp:32:
+/usr/include/c++/9/bits/hashtable.h: In instantiation of ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::~_Hashtable() [with _Key = NDTime; _Value = std::pair<const NDTime, co2>; _Alloc = std::allocator<std::pair<const NDTime, co2> >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<NDTime>; _H1 = std::hash<NDTime>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>]’:
+/usr/include/c++/9/bits/unordered_map.h:102:11:   required from here
+/usr/include/c++/9/bits/hashtable.h:1354:5: error: use of deleted function ‘std::__detail::_Hashtable_base<NDTime, std::pair<const NDTime, co2>, std::__detail::_Select1st, std::equal_to<NDTime>, std::hash<NDTime>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Hashtable_traits<true, false, true> >::~_Hashtable_base()’
+ 1354 |     }
+      |     ^
+In file included from /usr/include/c++/9/bits/hashtable.h:35,
+                 from /usr/include/c++/9/unordered_map:46,
+                 from /usr/include/c++/9/functional:61,
+                 from /usr/include/c++/9/pstl/glue_algorithm_defs.h:13,
+                 from /usr/include/c++/9/algorithm:71,
+                 from /usr/include/boost/any.hpp:17,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_message_bag.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_model.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/modeling/dynamic_coupled.hpp:30,
+                 from /mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/model/co2_main.cpp:32:
+/usr/include/c++/9/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_M_hash_code(const _Key&) const [with _Key = NDTime; _Value = std::pair<const NDTime, co2>; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<NDTime>; _H2 = std::__detail::_Mod_range_hashing; std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code = long unsigned int]’:
+/usr/include/c++/9/bits/hashtable.h:1417:19:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::iterator std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::find(const key_type&) [with _Key = NDTime; _Value = std::pair<const NDTime, co2>; _Alloc = std::allocator<std::pair<const NDTime, co2> >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<NDTime>; _H1 = std::hash<NDTime>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::iterator = std::__detail::_Node_iterator<std::pair<const NDTime, co2>, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::key_type = NDTime]’
+/usr/include/c++/9/bits/unordered_map.h:921:29:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::iterator std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::find(const key_type&) [with _Key = NDTime; _Tp = co2; _Hash = std::hash<NDTime>; _Pred = std::equal_to<NDTime>; _Alloc = std::allocator<std::pair<const NDTime, co2> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::iterator = std::__detail::_Node_iterator<std::pair<const NDTime, co2>, false, true>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_type = NDTime]’
+/mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/celldevs/delay_buffer/transport.hpp:57:54:   required from ‘void cadmium::celldevs::transport_delay_buffer<T, S>::add_to_buffer(S, T) [with T = NDTime; S = co2]’
+/mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic/../../../cadmium/include/cadmium/celldevs/delay_buffer/transport.hpp:55:14:   required from here
+/usr/include/c++/9/bits/hashtable_policy.h:1382:16: error: static assertion failed: hash function must be invocable with an argument of key type
+ 1382 |  static_assert(__is_invocable<const _H1&, const _Key&>{},
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/9/bits/hashtable_policy.h:1384:16: error: no match for call to ‘(const std::hash<NDTime>) (const NDTime&)’
+ 1384 |  return _M_h1()(__k);
+      |         ~~~~~~~^~~~~
+make[2]: *** [CMakeFiles/co2_lab.dir/build.make:63: CMakeFiles/co2_lab.dir/model/co2_main.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:76: CMakeFiles/co2_lab.dir/all] Error 2
+make: *** [Makefile:95: all] Error 2
+hoda@LAPTOP-FNN7LDSJ:/mnt/c/Users/hoda_/Documents/Hoda Documents/Carleton/ARS Lab PostDoc/git/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/computer_lab_basic$  
