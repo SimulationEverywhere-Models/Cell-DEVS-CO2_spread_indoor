@@ -1,0 +1,3243 @@
+{
+  "scenario": {
+    "shape": [38, 57],
+    "wrapped": false,
+    "default_delay": "transport",
+    "default_cell_type": "CO2_cell",
+    "default_state": {
+      "counter": -1,
+      "concentration": 500,
+	  "type": -100,
+	  "breathing_counter": 0
+    },
+    "default_config": {
+      "CO2_cell": {
+        "co2_production": 0.0155,
+        "cell_size": 25,
+        "resp_time" : 1,
+		"breathing_rate": 5
+      }
+    },
+    "neighborhood": [
+      {
+        "type": "von_neumann",
+        "range": 1       
+      }
+    ]
+  },
+  "cells": [
+    {
+  "cell_id": [10,8],
+  "state":{
+    "concentration": 500,
+    "type": -200
+  }
+},
+{
+  "cell_id": [13,8],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": -5
+  }
+},
+{
+  "cell_id": [17,8],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": -7
+  }
+},
+{
+  "cell_id": [20,8],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": -9
+  }
+},
+{
+  "cell_id": [24,8],
+  "state":{
+    "concentration": 500,
+    "type": -200
+  }
+},
+{
+  "cell_id": [27,8],
+  "state":{
+    "concentration": 500,
+    "type": -200
+  }
+},
+{
+  "cell_id": [10,13],
+  "state":{
+    "concentration": 500,
+    "type": -200
+  }
+},
+{
+  "cell_id": [13,13],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": 0
+  }
+},
+{
+  "cell_id": [17,13],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": 5
+  }
+},
+{
+  "cell_id": [20,13],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": 2
+  }
+},
+{
+  "cell_id": [24,13],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": 1
+  }
+},
+{
+  "cell_id": [27,13],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": 0
+  }
+},
+{
+  "cell_id": [10,19],
+  "state":{
+    "concentration": 500,
+    "type": -200
+  }
+},
+{
+  "cell_id": [13,19],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": -7
+  }
+},
+{
+  "cell_id": [17,19],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": -4
+  }
+},
+{
+  "cell_id": [20,19],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": -6
+  }
+},
+{
+  "cell_id": [24,19],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": 4
+  }
+},
+{
+  "cell_id": [27,19],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": 9
+  }
+},
+{
+  "cell_id": [10,24],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": 1
+  }
+},
+{
+  "cell_id": [13,24],
+  "state":{
+    "concentration": 500,
+    "type": -200
+  }
+},
+{
+  "cell_id": [17,24],
+  "state":{
+    "concentration": 500,
+    "type": -200
+  }
+},
+{
+  "cell_id": [10,30],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": 12
+  }
+},
+{
+  "cell_id": [13,30],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": 20
+  }
+},
+{
+  "cell_id": [17,30],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": 22
+  }
+},
+{
+  "cell_id": [10,35],
+  "state":{
+    "concentration": 500,
+    "type": -200
+  }
+},
+{
+  "cell_id": [13,35],
+  "state":{
+    "concentration": 500,
+    "type": -200
+  }
+},
+{
+  "cell_id": [17,35],
+  "state":{
+    "concentration": 500,
+    "type": -200
+  }
+},
+{
+  "cell_id": [10,41],
+  "state":{
+    "concentration": 500,
+    "type": -200
+  }
+},
+{
+  "cell_id": [13,41],
+  "state":{
+    "concentration": 500,
+    "type": -200
+  }
+},
+{
+  "cell_id": [17,41],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": -2
+  }
+},
+{
+  "cell_id": [10,46],
+  "state":{
+    "concentration": 500,
+    "type": -200
+  }
+},
+{
+  "cell_id": [13,46],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": 14
+  }
+},
+{
+  "cell_id": [17,46],
+  "state":{
+    "concentration": 500,
+    "type": -200
+  }
+},
+{
+  "cell_id": [20,46],
+  "state":{
+    "concentration": 500,
+    "type": -200,
+    "counter": 18
+  }
+},
+{
+  "cell_id": [24,46],
+  "state":{
+    "concentration": 500,
+    "type": -200
+  }
+},
+{
+  "cell_id": [27,46],
+  "state":{
+    "concentration": 500,
+    "type": -200
+  }
+},
+{
+  "cell_id": [0,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [1,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [2,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [3,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [4,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [5,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [6,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [7,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [8,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [9,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [10,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [11,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [12,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [13,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [14,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [15,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [16,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [17,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [18,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [19,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [20,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [21,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [22,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [23,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [24,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [25,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [26,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [27,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [28,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [29,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [30,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [31,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [32,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,0],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,1],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [1,1],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [2,1],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [3,1],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [4,1],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [5,1],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [6,1],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [9,1],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [10,1],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [23,1],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [24,1],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [35,1],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,1],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,1],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,2],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [1,2],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [2,2],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [3,2],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [4,2],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [5,2],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [6,2],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,2],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,2],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,2],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,3],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,3],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,3],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,3],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,4],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,4],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,4],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,4],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,4],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,4],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,5],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,5],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,5],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,5],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,5],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,5],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,6],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,6],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,6],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,6],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,6],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,6],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,7],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,7],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,7],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,7],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,7],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,7],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,8],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,8],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,8],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,8],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,8],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,8],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,9],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,9],
+  "state":{
+    "concentration": 500,
+    "type": -300,
+    "counter": 0
+  }
+},
+{
+  "cell_id": [34,9],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,9],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,9],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,9],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,10],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [4,10],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [5,10],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [14,10],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [15,10],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [25,10],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [26,10],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [33,10],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,10],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,10],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,10],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,10],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,11],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [4,11],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [5,11],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [14,11],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [15,11],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [25,11],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [26,11],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [33,11],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,11],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,11],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,11],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,11],
+  "state":{
+    "concentration": 500,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,12],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,12],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,12],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,12],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,12],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,12],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,13],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,13],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,13],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,13],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,14],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,14],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,14],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,14],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,15],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,15],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,15],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,15],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,16],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,16],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,16],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,16],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,17],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,17],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,17],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,17],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,18],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,18],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,18],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,18],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,19],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,19],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,19],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,19],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,20],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,20],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,20],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,20],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,21],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,21],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,21],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,21],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,22],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,22],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,22],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,22],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,23],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,23],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,23],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,23],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,24],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,24],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,24],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,24],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,25],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,25],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,25],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,25],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,26],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,26],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,26],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,26],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,27],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,27],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,27],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,27],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,28],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [4,28],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [5,28],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [14,28],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [15,28],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [25,28],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [26,28],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [33,28],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,28],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,28],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,28],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,28],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,29],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [4,29],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [5,29],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [14,29],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [15,29],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [25,29],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [26,29],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [33,29],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,29],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,29],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,29],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,29],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,30],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,30],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,30],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,30],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,30],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,30],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,31],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,31],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,31],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,31],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,31],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,31],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,32],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,32],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,32],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,32],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,32],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,32],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,33],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,33],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,33],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,33],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,33],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,33],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,34],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,34],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,34],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,34],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,34],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,34],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,35],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,35],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,35],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,35],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,35],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,35],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,36],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [1,36],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [2,36],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [3,36],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [4,36],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [5,36],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,36],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,36],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,36],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,36],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,36],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,37],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [1,37],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [2,37],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [3,37],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [4,37],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [5,37],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,37],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,37],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,37],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,38],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,38],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,38],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,38],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,39],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,39],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,39],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,39],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,40],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,40],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,40],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,40],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,41],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,41],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,41],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,41],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,42],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,42],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,42],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,42],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,43],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,43],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,43],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,43],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,44],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,44],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,44],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,44],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,45],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [4,45],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [5,45],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [14,45],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [15,45],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [25,45],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [26,45],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [35,45],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,45],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,45],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,46],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [4,46],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [5,46],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [14,46],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [15,46],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [25,46],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [26,46],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [35,46],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,46],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,46],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,47],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,47],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,47],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,47],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,48],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,48],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,48],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,48],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,49],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,49],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,49],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,49],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,50],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [9,50],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [10,50],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [24,50],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [25,50],
+  "state":{
+    "concentration": 500,
+    "type": -100
+  }
+},
+{
+  "cell_id": [35,50],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,50],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,50],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,51],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,51],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,51],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,51],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,52],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,52],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,52],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,52],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,53],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [1,53],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [2,53],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [3,53],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [4,53],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [5,53],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [6,53],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,53],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,53],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,53],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,54],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [1,54],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [2,54],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [3,54],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [4,54],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [5,54],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [6,54],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,54],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,54],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,54],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,54],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,54],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,55],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [1,55],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [2,55],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [3,55],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [4,55],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [5,55],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [6,55],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,55],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,55],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,55],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,55],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,55],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [0,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [1,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [2,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [3,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [4,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [5,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [6,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [7,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [8,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [9,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [10,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [11,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [12,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [13,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [14,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [15,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [16,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [17,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [18,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [19,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [20,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [21,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [22,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [23,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [24,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [25,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [26,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [27,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [28,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [29,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [30,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [31,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [32,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [33,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [34,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [35,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [36,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+},
+{
+  "cell_id": [37,56],
+  "state":{
+    "concentration": 0,
+    "type": -300
+  }
+}
+  ]
+}
