@@ -1,0 +1,19 @@
+{
+    "in_scenario_file": "in/lab_small_19_occupants_improved.json",
+	"scenarios_path": "out/",
+	"vent_size"	:	3,
+	"max_number_of_scenarios": 60,
+	"model_path": "../../computer_lab_infection/bin/co2_lab",
+	"results_path": "results",
+	"collected_results_path": "all_results/",
+	"exposed_occupant_type": -250,
+	"vent_type": -600,
+	"occupant_type": -200,
+	"number_of_CO2_readings": 4,
+	"sensors_locations": [
+		{"coords": [15, 15, 0]},
+		{"coords": [15, 45, 0]}
+	],
+	"structure_file": "./structure.json",
+	"collected_data_sheet": "training_data.csv"
+}
