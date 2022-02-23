@@ -25,8 +25,7 @@ All versions of the model support changes to the following elements in the input
 4. Start time for the state at which the workstations change into CO2 sources in the base models can be changed using the start_time (line 23 approx)
 5. Number of states spent at the workstation can be adjusted using the time_active value in the default state of the json (line 22 approx)
 
-HOW TO USE THE "IMPROVED PERFORMANCE" VERSION OF CADMIUM:
-NOTE: These steps should be updated once this performance improvement is merged into the latest release of cadmium
+Cadmium:
 1. Navigate to the directory where you want to clone the simulator and open bash prompt 
 2. Run (git clone https://github.com/SimulationEverywhere/Cell-DEVS-Cadmium-Simulation-Environment.git) 
 3. After cloning, navigate to ./Cell-DEVS-Cadmium-Simulation-Environment and open another bash prompt
@@ -34,7 +33,6 @@ NOTE: These steps should be updated once this performance improvement is merged 
 5. Navigate to ./Cadmium-Cell-DEVS-Models
 4. Run (git clone https://github.com/SimulationEverywhere-Models/Cell-DEVS-CO2_spread_indoor.git)
 5. Navigate to ../cadmium and open another bash prompt
-6. Run (git checkout celldevs-jason-performance-improvement)
 6. Follow the steps bellow to run the simulations on the models.
 
 TO RUN:
