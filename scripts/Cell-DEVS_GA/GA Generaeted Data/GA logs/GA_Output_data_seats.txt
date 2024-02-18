@@ -1,0 +1,98 @@
+algorithm_param = {'max_num_iteration': 30,                   'population_size':5,                   'mutation_probability':0.1,                   'elit_ratio': 0.01,                   'crossover_probability': 0.9,                   'parents_portion': 0.5,                   'crossover_type':'uniform',                   'max_iteration_without_improv':5}
+
+Warning: GA is terminated due to the maximum number of iterations without improvement was met![3.0, 3.0, 3.0, 3.0, 2.0, 2.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+{'variable': array([16., 15., 11., 15.,  7.,  7., 17., 24.,  4., 31.,  4., 22., 13.,
+        6.,  9.,  8., 15., 10., 17., 29., 13., 10., 12., 18., 19., 13.,
+        4., 16.,  9., 18.,  9., 23., 19., 13., 17.,  7.,  7., 19.,  7.,
+       17.]), 'function': 1.0}
+	   
+algorithm_param = {'max_num_iteration': 30,                   'population_size':5,                   'mutation_probability':0.1,                   'elit_ratio': 0.01,                   'crossover_probability': 0.9,                   'parents_portion': 0.5,                   'crossover_type':'uniform',                   'max_iteration_without_improv':10}
+	   
+	   Warning: GA is terminated due to the maximum number of iterations without improvement was met![4.0, 2.0, 2.0, 2.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+{'variable': array([16., 30., 12., 28.,  6.,  5., 17.,  8., 16., 16., 10., 23., 16.,
+        5.,  5., 28.,  5., 22.,  9., 26., 11.,  5., 17.,  7.,  6., 30.,
+        6., 11.,  5., 20., 14., 12., 18., 28., 10., 23., 12., 16.,  4.,
+
+        7.]), 'function': 0.0}
+		
+-----------------------------------------------------------------------------------------------------------------------------------		
+algorithm_param = {'max_num_iteration': 30,                   'population_size':5,                   'mutation_probability':0.1,                   'elit_ratio': 0.01,                   'crossover_probability': 0.9,                   'parents_portion': 0.5,                   'crossover_type':'uniform',                   'max_iteration_without_improv':10}
+
+model=ga(function=evlauate_seating,dimension=40,variable_type='int',variable_boundaries=varbound, algorithm_parameters=algorithm_param, function_timeout=3600.0)
+
+after simulation
+number of sick occuapnst:5,scenrio name: scenario_seats1.json
+after simulation
+number of sick occuapnst:1,scenrio name: scenario_seats2.json
+after simulation
+number of sick occuapnst:2,scenrio name: scenario_seats3.json
+after simulation
+number of sick occuapnst:7,scenrio name: scenario_seats4.json
+after simulation
+number of sick occuapnst:5,scenrio name: scenario_seats5.json
+||________________________________________________ 3.3% GA is running...after simulation
+number of sick occuapnst:5,scenrio name: scenario_seats6.json
+after simulation
+number of sick occuapnst:0,scenrio name: scenario_seats7.json
+|||_______________________________________________ 6.7% GA is running...after simulation
+number of sick occuapnst:2,scenrio name: scenario_seats8.json
+after simulation
+number of sick occuapnst:3,scenrio name: scenario_seats9.json
+|||||_____________________________________________ 10.0% GA is running...after simulation
+number of sick occuapnst:4,scenrio name: scenario_seats10.json
+after simulation
+number of sick occuapnst:2,scenrio name: scenario_seats11.json
+|||||||___________________________________________ 13.3% GA is running...after simulation
+number of sick occuapnst:4,scenrio name: scenario_seats12.json
+after simulation
+number of sick occuapnst:4,scenrio name: scenario_seats13.json
+||||||||__________________________________________ 16.7% GA is running...after simulation
+number of sick occuapnst:2,scenrio name: scenario_seats14.json
+after simulation
+number of sick occuapnst:6,scenrio name: scenario_seats15.json
+||||||||||________________________________________ 20.0% GA is running...after simulation
+number of sick occuapnst:6,scenrio name: scenario_seats16.json
+after simulation
+number of sick occuapnst:5,scenrio name: scenario_seats17.json
+||||||||||||______________________________________ 23.3% GA is running...after simulation
+number of sick occuapnst:5,scenrio name: scenario_seats18.json
+after simulation
+number of sick occuapnst:4,scenrio name: scenario_seats19.json
+|||||||||||||_____________________________________ 26.7% GA is running...after simulation
+number of sick occuapnst:1,scenrio name: scenario_seats20.json
+after simulation
+number of sick occuapnst:6,scenrio name: scenario_seats21.json
+|||||||||||||||___________________________________ 30.0% GA is running...after simulation
+number of sick occuapnst:9,scenrio name: scenario_seats22.json
+after simulation
+number of sick occuapnst:2,scenrio name: scenario_seats23.json
+|||||||||||||||||_________________________________ 33.3% GA is running...after simulation
+number of sick occuapnst:5,scenrio name: scenario_seats24.json
+after simulation
+number of sick occuapnst:4,scenrio name: scenario_seats25.json
+||||||||||||||||||________________________________ 36.7% GA is running...after simulation
+number of sick occuapnst:8,scenrio name: scenario_seats26.json
+after simulation
+number of sick occuapnst:4,scenrio name: scenario_seats27.json
+||||||||||||||||||||______________________________ 40.0% GA is running...after simulation
+number of sick occuapnst:0,scenrio name: scenario_seats28.json
+after simulation
+number of sick occuapnst:6,scenrio name: scenario_seats29.json
+||||||||||||||||||||||____________________________ 43.3% GA is running...after simulation
+number of sick occuapnst:2,scenrio name: scenario_seats30.json
+after simulation
+number of sick occuapnst:3,scenrio name: scenario_seats31.json
+ The best solution found:
+ [ 8. 18. 16. 20. 15. 17. 17.  8. 17. 25.  4.  8.  8. 27.  4. 24. 10. 31.
+ 16. 20. 17. 17.  9. 24.  4. 11. 16. 31. 10.  4. 12. 26.  9. 19. 11. 18.
+  7. 19.  5. 11.]
+
+ Objective function:
+ 0.0
+
+Warning: GA is terminated due to the maximum number of iterations without improvement was met![1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+{'variable': array([ 8., 18., 16., 20., 15., 17., 17.,  8., 17., 25.,  4.,  8.,  8.,
+       27.,  4., 24., 10., 31., 16., 20., 17., 17.,  9., 24.,  4., 11.,
+       16., 31., 10.,  4., 12., 26.,  9., 19., 11., 18.,  7., 19.,  5.,
+       11.]), 'function': 0.0}
+hodakhalil@HDevice:/mnt/c/Users/hoda_/Documents/GitHub/Cell-DEVS-Cadmium-Simulation-Environment/Cadmium-Cell-DEVS-Models/Cell-DEVS-CO2_spread_indoor/scripts/Cell-DEVS_training-data$

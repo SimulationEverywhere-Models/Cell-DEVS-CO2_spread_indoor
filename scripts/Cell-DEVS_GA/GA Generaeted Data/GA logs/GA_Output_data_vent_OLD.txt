@@ -1,0 +1,28 @@
+algorithm_param = {'max_num_iteration': 20,                   'population_size':50,                   'mutation_probability':0.1,                   'elit_ratio': 0,                   'crossover_probability': 0.5,                   'parents_portion': 0.3,                   'crossover_type':'uniform',                   'max_iteration_without_improv':None}
+[10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0]
+
+algorithm_param = {'max_num_iteration': 6,                   'population_size':10,                   'mutation_probability':0.1,                   'elit_ratio': 0,                   'crossover_probability': 0.5,                   'parents_portion': 0.3,                   'crossover_type':'uniform',                   'max_iteration_without_improv':None}
+[10.0, 10.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0]
+
+algorithm_param = {'max_num_iteration': 20,                   'population_size':10,                   'mutation_probability':0.1,                   'elit_ratio': 0,                   'crossover_probability': 0.5,                   'parents_portion': 0.3,                   'crossover_type':'uniform',                   'max_iteration_without_improv':None}
+
+[10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0]
+
+algorithm_param = {'max_num_iteration': 10,                   'population_size':10,                   'mutation_probability':0.1,                   'elit_ratio': 0,                   'crossover_probability': 0.05,                   'parents_portion': 0.3,                   'crossover_type':'uniform',                   'max_iteration_without_improv':None}
+[10.0, 12.0, 12.0, 11.0, 12.0, 12.0, 11.0, 12.0, 12.0, 12.0, 12.0]
+objective 10
+
+algorithm_param = {'max_num_iteration': 5,                   'population_size':30,                   'mutation_probability':0.1,                   'elit_ratio': 0,                   'crossover_probability': 0.05,                   'parents_portion': 0.3,                   'crossover_type':'uniform',                   'max_iteration_without_improv':None}
+[9.0, 10.0, 10.0, 11.0, 12.0, 12.0]
+
+algorithm_param = {'max_num_iteration': 6,                   'population_size':10,                   'mutation_probability':0.1,                   'elit_ratio': 0,                   'crossover_probability': 0.8,                   'parents_portion': 0.3,                   'crossover_type':'uniform',                   'max_iteration_without_improv':None}
+[10.0, 10.0, 11.0, 11.0, 11.0, 11.0, 11.0]
+
+algorithm_param = {'max_num_iteration': 6,                   'population_size':15,                   'mutation_probability':0.1,                   'elit_ratio': 0,                   'crossover_probability': 0.8,                   'parents_portion': 0.3,                   'crossover_type':'uniform',                   'max_iteration_without_improv':None}
+[10.0, 9.0, 10.0, 10.0, 10.0, 10.0, 10.0]
+
+algorithm_param = {'max_num_iteration': 6,                   'population_size':15,                   'mutation_probability':0.1,                   'elit_ratio': 0,                   'crossover_probability': 0.05,                   'parents_portion': 0.3,                   'crossover_type':'uniform',                   'max_iteration_without_improv':None}
+[12.0, 12.0, 12.0, 10.0, 10.0, 10.0, 10.0]
+
+algorithm_param = {'max_num_iteration': 6,                   'population_size':15,                   'mutation_probability':0.1,                   'elit_ratio': 0,                   'crossover_probability': 0.05,                   'parents_portion': 0.3,                   'crossover_type':'uniform',                   'max_iteration_without_improv':None}
+[11.0, 11.0, 11.0, 11.0, 11.0, 11.0, 11.0]

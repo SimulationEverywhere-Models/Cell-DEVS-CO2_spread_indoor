@@ -1,0 +1,4 @@
+   algorithm_param = {'max_num_iteration': 30,                 'population_size':10,                   'mutation_probability':0.1,                   'elit_ratio': 0.01,                   'crossover_probability': 0.9,         'parents_portion': 0.5,                   'crossover_type':'uniform',                   'max_iteration_without_improv':15}
+
+
+[24.0, 24.0, 24.0, 24.0, 24.0, 23.0, 22.0, 21.0, 21.0, 21.0, 21.0, 21.0, 21.0, 21.0, 21.0, 21.0, 21.0, 21.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 19.0, 19.0]
